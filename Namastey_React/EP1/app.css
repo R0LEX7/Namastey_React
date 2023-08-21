@@ -1,0 +1,18 @@
+*{
+    margin: 0;
+    padding : 0;
+    box-sizing : border-box;
+}
+
+
+#root{
+    width:100vw;
+    height:100vh;
+    background-color: rgb(222, 200, 158);
+}
+
+.heading {
+    color: rgb(90, 233, 90);
+    font-size : 3rem;
+    
+}
