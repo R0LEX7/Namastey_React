@@ -1,9 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 const Fun = () => {
-  return (
-    <div>Fun</div>
-  )
-}
+    console.log('Hello from Fun component');
+    return <div>Fun Component</div>;
+};
 
-export default Fun
+export default Fun;
