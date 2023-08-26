@@ -1,0 +1,77 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&family=Poppins:wght@300;400;500;600&display=swap');
+
+
+*{
+    color : #d6cdcd;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-color: #08080B;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-around;
+}
+.navbar > ul{
+    list-style: none;
+    display : flex;
+    flex-direction: row;
+    gap : 60px;
+}
+
+li{
+    cursor: pointer;
+    transform: scale(1.5);
+    transition: 0.5s ease-in-out;
+}
+
+li:hover{
+    transform: scale(2);
+}
+.card{
+    display : flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.card-item {
+    height: 600px;
+    width : 300px;
+    border: #d6cdcd solid 2px;
+    margin-top : 40px;
+    border-radius: 50px 12px 12px 12px ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    background-color: #0f0f14;
+    overflow: hidden;
+
+
+}
+
+.card-item > img {
+    width : 300px;
+    height: 292px;
+}
+
+.green {
+    color: green;
+}
+.red {
+    color: red
+}
+
+.data{
+    height: 250px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
