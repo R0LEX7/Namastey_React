@@ -66,14 +66,12 @@ Its a series to learn the working behind react also to understand it better.
     root.render(<h1>Hello world!</h1>);
  ``` 
 
-# Namastey React Series
 
-Its a series to learn the working behind react also to understand it better.
 
 
 # Day 02 -> File Structure
 
- ``` 
+
 ## 3. What is package.json file ?
 - This is a JSON(javascript object notation) file that includes metadata such as "name" , "author" , version of packages , as well as Starter Scripts & dependencies.
 
