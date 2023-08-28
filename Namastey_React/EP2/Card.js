@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Card = (props) => {
-    console.log(props.character);
+    // console.log(props.character);
  const {image , name ,gender ,status , type , species, origin , location} = props.character;  
     
   return (
