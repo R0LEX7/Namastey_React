@@ -1,16 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {App} from "./App";
-import "/style.css";
+import  App  from './app';
+import "./style.css";
+import { createBrowserRouter ,RouterProvider } from 'react-router-dom';
+import Menu from './Menu';
 
-
+const router = createBrowserRouter([{
+    path: '/',
+    element: <App/>
+},{
+    path: '/restaurant/:id',
+    element: <Menu/>
+}])
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App/>);
+root.render(<RouterProvider router = {router} />);
 
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import { App } from './App';
-
-// const root = document.getElementById('root');
-// ReactDOM.render(<App />, root);
+;

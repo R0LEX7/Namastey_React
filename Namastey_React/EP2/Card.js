@@ -1,19 +1,31 @@
-import React from 'react'
+import React , {useEffect} from 'react'
+import { swiggy_api_URL } from './config';
 
 const Card = (props) => {
-    // console.log(props.character);
- const {image , name ,gender ,status , type , species, origin , location} = props.character;  
+ const {image , name ,gender ,status , type , species, origin , location} = props?.character; 
+ 
+ useEffect(() => {
+   apiCall(swiggy_api_URL);
+ }, [])
+ 
+ 
+ 
     
+ 
   return (
     <>
     <div className="card-item">
     <img alt={image} src={image}/>    
-        <h2>{name}</h2>
-        <div className="data"><p>{gender}</p>
-        <p>Status: 
-            {status == "Alive" ? <span className='green'> {status}</span> : <span className='red'> {status}</span>} {species}</p>
-            <p>{ origin.name === "unknown" ? (<p>{location.name}</p>) : (<p>{location.name}</p>)}</p>
-            <p>{type}</p></div>
+        
+        <div className="data">
+        <span className='name'>{name}</span>
+        <span>{gender}</span>
+        
+            {status == "Alive" ? <span className='green'> Status: {status}</span> : <span className='red'> Status: {status}</span>} {species}
+            { origin.name === "unknown" ? (<span>{location.name}</span>) : (<span>{origin.name}</span>)}
+            <span>{type}
+            </span>
+            </div>
     </div>
     </>
   )

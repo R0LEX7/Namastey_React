@@ -1,78 +1,90 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./Header";
-import Card from "./Card";
-import { API_URL } from "./config";
+import { res, swiggy_api_URL } from "./config";
+import RestaurantCard from "./RestaurantCard";
+import { BsSearch } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
-const filterData = (text, data) => {
-  return data.filter((char) =>
-    char.name.toLowerCase().includes(text.toLowerCase())
+// Search functionality
+
+function filterData(text, data) {
+  return data.filter((item) =>
+    item?.info?.name.toLowerCase().includes(text.toLowerCase())
   );
-};
+}
 
-export function App() {
-  const [data, setData] = useState([]);
+// console.log(res)
+const app = () => {
+  const [restaurant, setRestaurant] = useState([]);
+  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
-
-  const onOptionChangeHandler = (event) => {
-    let val = event.target.value.toLowerCase();
-    console.log("User Selected Value - ", event.target.value);
-    if (val !== "") {
-      const updatedData = data.filter((char) =>
-        char.status.toLowerCase().includes(val)
-      );
-      setData(updatedData);
-    }
-  };
+  console.log(searchText);
 
   useEffect(() => {
-    fetch(API_URL)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("useEffect called");
-        setData(data.results);
-      })
-      .catch((err) => console.error(err));
+    getRestaurants();
   }, []);
 
-  console.log("render")
+  async function getRestaurants() {
+    try {
+      const response = await fetch(swiggy_api_URL);
+      const json = await response.json();
+
+      async function checkJsonData(jsonData) {
+        for (let i = 0; i < jsonData?.data?.cards.length; i++) {
+          let checkData =
+            jsonData?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle
+              ?.restaurants;
+
+          if (checkData !== undefined) return checkData;
+        }
+      }
+
+      const resData = await checkJsonData(json);
+      console.log(resData);
+      setRestaurant(resData);
+      setFilteredRestaurant(resData);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  console.log(filteredRestaurant);
   return (
     <>
-      <Header />
+      {/* <Header/> */}
       <div className="search">
         <input
           type="text"
-          placeholder="search"
+          placeholder={"Search ..."}
           value={searchText}
-          onChange={(e) => {
-            setSearchText(e.target.value);
-
-            console.log(searchText);
-          }}
+          onChange={(e) => setSearchText(e.target.value)}
         />
         <button
           onClick={() => {
-            if (searchText.length !== 0) {
-              const filteredData = filterData(searchText, data);
-              setData(filteredData);
+            setFilteredRestaurant(restaurant);
+            const trimmedSearchText = searchText.trim();
+            if (trimmedSearchText.length > 0) {
+              setSearchText(trimmedSearchText); // Update the state
+              const filteredData = filterData(trimmedSearchText, restaurant);
+              setFilteredRestaurant(filteredData);
             }
           }}
         >
-          Search
+          <BsSearch />
         </button>
       </div>
-      <div className="select">
-        <select name="character" id="char" onChange={onOptionChangeHandler}>
-          <option value="">All</option>
-          <option value="Alive">Alive</option>
-          <option value="dead">Dead</option>
-        </select>
-      </div>
-      <div className="card">
-        {console.log(data)}
-        {data.map((character) => {
-          return <Card key={character.name} character={character} />;
+      <div className="restaurants">
+        {filteredRestaurant.map((restaurant) => {
+          return (
+           <Link to = {`/restaurant/${restaurant.info.id}`}  key={restaurant?.info.id}>
+             <RestaurantCard
+             
+              restaurant={restaurant?.info}
+            />
+           </Link>          );
         })}
       </div>
     </>
   );
-}
+};
+
+export default app;
