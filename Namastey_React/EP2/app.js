@@ -1,53 +1,31 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
-import { res, swiggy_api_URL } from "./config";
+// import { res, swiggy_api_URL } from "./config";
 import RestaurantCard from "./RestaurantCard";
 import { BsSearch } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import useRestaurant from "./utils/useRestaurent";
+import { filterData } from "./utils/functions";
+import useOnline from "./utils/useOnline";
 
-// Search functionality
-
-function filterData(text, data) {
-  return data.filter((item) =>
-    item?.info?.name.toLowerCase().includes(text.toLowerCase())
-  );
-}
-
-// console.log(res)
 const app = () => {
-  const [restaurant, setRestaurant] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+
   const [searchText, setSearchText] = useState("");
-  console.log(searchText);
+  const restaurant = useRestaurant();
 
   useEffect(() => {
-    getRestaurants();
-  }, []);
+    setFilteredRestaurant(restaurant);
+    console.log(filteredRestaurant);
+  }, [restaurant]);
 
-  async function getRestaurants() {
-    try {
-      const response = await fetch(swiggy_api_URL);
-      const json = await response.json();
+  const isOnline = useOnline();
 
-      async function checkJsonData(jsonData) {
-        for (let i = 0; i < jsonData?.data?.cards.length; i++) {
-          let checkData =
-            jsonData?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle
-              ?.restaurants;
+  if(!isOnline) return (<div className="offline"><h1>Check Your Internet connection and try again!!!</h1></div>);
 
-          if (checkData !== undefined) return checkData;
-        }
-      }
+  // early return is there is no restaurant
+  if(!filteredRestaurant) return null;
 
-      const resData = await checkJsonData(json);
-      console.log(resData);
-      setRestaurant(resData);
-      setFilteredRestaurant(resData);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  console.log(filteredRestaurant);
   return (
     <>
       {/* <Header/> */}
@@ -75,12 +53,13 @@ const app = () => {
       <div className="restaurants">
         {filteredRestaurant.map((restaurant) => {
           return (
-           <Link to = {`/restaurant/${restaurant.info.id}`}  key={restaurant?.info.id}>
-             <RestaurantCard
-             
-              restaurant={restaurant?.info}
-            />
-           </Link>          );
+            <Link
+              to={`/restaurant/${restaurant.info.id}`}
+              key={restaurant?.info.id}
+            >
+              <RestaurantCard restaurant={restaurant?.info} />
+            </Link>
+          );
         })}
       </div>
     </>

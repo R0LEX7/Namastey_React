@@ -1,36 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&family=Poppins:wght@300;400;500;600&display=swap");
 
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&family=Poppins:wght@300;400;500;600&display=swap');
-
-
-*{
-    color : #d6cdcd;
-    font-family: 'Montserrat', sans-serif;
-    font-family: 'Poppins', sans-serif;
+* {
+  color: #d6cdcd;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-body{
-    background-color: #08080B;
+body {
+  background-color: #08080b;
 }
 
-.navbar{
-    display: flex;
-    justify-content: space-around;
+.navbar {
+  display: flex;
+  justify-content: space-around;
 }
-.navbar > ul{
-    list-style: none;
-    display : flex;
-    flex-direction: row;
-    gap : 60px;
-}
-
-li{
-    cursor: pointer;
-    transform: scale(1.5);
-    transition: 0.5s ease-in-out;
+.navbar > ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
 }
 
-li:hover{
-    transform: scale(2);
+li {
+  cursor: pointer;
+  transform: scale(1.5);
+  transition: 0.5s ease-in-out;
+}
+
+li:hover {
+  transform: scale(2);
 }
 /* .card{
     margin-top: 40px;
@@ -42,113 +40,123 @@ li:hover{
     gap: 20px;
 } */
 .card-item {
-    height: 430px;
-    width : 300px;
-    border: #d6cdcd solid 2px;
-    margin-top : 40px;
-    border-radius: 50px 12px 12px 12px ;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: #0f0f14;
-    overflow: hidden;
-
-
+  height: 430px;
+  width: 300px;
+  border: #d6cdcd solid 2px;
+  margin-top: 40px;
+  border-radius: 50px 12px 12px 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #0f0f14;
+  overflow: hidden;
 }
 
 .card-item > img {
-    width : 300px;
-    height: 300px;
+  width: 300px;
+  height: 300px;
 }
 
 .green {
-    color: green;
+  color: green;
 }
 .red {
-    color: red
+  color: red;
 }
 
-.data > .name{
-    font-size: 1.5rem;
-    font-weight: 500;
+.data > .name {
+  font-size: 1.5rem;
+  font-weight: 500;
 }
-.data{
-    margin-bottom: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    flex-wrap: wrap;
+.data {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
-.restaurants{
-    display: flex;
-    flex-wrap: wrap;
-    width: auto;
-    justify-content: center;
-    flex-direction: column;
+.restaurants {
+  display: flex;
+  flex-wrap: wrap;
+  width: auto;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.card{
-    /* height: 400px; */
-    background-color: #0f0f14;
-    width : 250px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    cursor: pointer;
-    padding: 10px;
-    margin: 20px;
-    text-decoration: none;
+.card {
+  /* height: 400px; */
+  background-color: #0f0f14;
+  width: 250px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  cursor: pointer;
+  padding: 10px;
+  margin: 20px;
+  text-decoration: none;
 }
 
 .card > img {
-    width: 100%;
-    border-radius: 10px;
-  }
-
-  .card > .details{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
-.card > h3 , .card > h5 ,.details > h5 , .details > span,  .details>  h4 {
-    margin: 0px;
-}
-.card  > h5{
-    font-weight: lighter;
+  width: 100%;
+  border-radius: 10px;
 }
 
-.search{
-    margin: 20px 0;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content:center ;
-    height: auto;
-    /* gap: 2px; */
+.details {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 1rem;
 }
 
-.search > input{
-    outline: none;
-    width : 220px;
-    height: 40px;
-    background-color : #0f0f14;
-    color : whitesmoke;
-    padding: 3px;
-    font-size: 1rem;
-   
+.card > h3,
+.card > h5,
+.details > h5,
+.details > span,
+.details > h4,
+.restaurant-details > h4,
+.details > h3,
+.restaurant-menu > h4 ,
+.menu-Card > h3,
+.menu-Card > h5, 
+.menu-Card > h4{
+  margin: 0px;
+}
+.card > h5 {
+  font-weight: lighter;
+}
+
+.search {
+  margin: 20px 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  /* gap: 2px; */
+}
+
+.search > input {
+  outline: none;
+  width: 220px;
+  height: 40px;
+  background-color: #0f0f14;
+  color: whitesmoke;
+  padding: 3px;
+  font-size: 1rem;
+
   box-sizing: border-box;
-border-radius: 5px;
-  
+  border-radius: 5px;
+
   box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
   padding: 14px 15px 14px 20px;
   border: 1px solid #48494a;
@@ -157,37 +165,179 @@ border-radius: 5px;
 }
 
 .search > button {
-    height: 40px;
-    width: 40px;
-    color: whitesmoke;
-    background-color: #0f0f14;
-    outline: none;
+  height: 40px;
+  width: 40px;
+  color: whitesmoke;
+  background-color: #0f0f14;
+  outline: none;
   border: 1px solid #48494a;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
 }
 
+.main {
+  padding: 20px;
+  /* width : 100%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.restaurant-summary {
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #0f0f14;
+}
+
+.restaurant-summary > img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.restaurant-details > h3 {
+  text-align: center;
+}
+
+.restaurant-summary > .restaurant-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* restaurant menu */
+.restaurant-menu {
+    width : 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.menu-Card {
+  margin:  10px;
+  width : 100%;
+  border-bottom: dashed 1px #d6cdcd;
+  padding: 10px 10px 32px 10px;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  flex-direction: column;
+  gap: 5px;
+  text-align: center;
+}
+
+.menu-Card > img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.details {
+    margin-top: 10px;
+}
+.details > button{
+    background-color: green;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+}
+
 @media (min-width: 768px) and (max-width: 1023px) {
-    .restaurants{
+    .restaurants {
         flex-direction: row;
         justify-content: space-evenly;
-    }
-
-    .search > input {
-        width : 40%;
-    }
-  }
-  
-  /* Desktop styles */
-  /* These styles apply to screens with a width of 1024px and above */
-  @media (min-width: 1024px) {
-    .restaurants{
+      }
+    
+      .search > input {
+        width: 40%;
+      }
+    
+      .restaurant-summary{
+        margin: 40px 0;
         flex-direction: row;
-        justify-content: space-evenly;
-    }
+        width : 60%;
+        justify-content: space-around;
+        gap: 20px;
+      }
+      .restaurant-summary > img {
+        width : 50%;
+      }
+      .restaurant-details , .restaurant-menu > h3{
+        font-size: x-large;
+      }
+      .menu-Card{
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .flex{
+        width: 50%;
+      }
+      .menu-Card > img{
+        max-width: 330px;
+        max-height: 200px;
+      }
+}
 
-    .search > input {
-        width : 40%;
-    }
+/* offline  */
+
+.offline{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width : 100vw;
+  height: 100vh;
+}
+
+/* stars */
+path{
+  color: gold;
+  font-size: 16px;
+}
+
+/* Desktop styles */
+/* These styles apply to screens with a width of 1024px and above */
+@media (min-width: 1024px) {
+  .restaurants {
+    flex-direction: row;
+    justify-content: space-evenly;
   }
+
+  .search > input {
+    width: 40%;
+  }
+
+  .restaurant-summary{
+    margin: 40px 0;
+    flex-direction: row;
+    width : 60%;
+    justify-content: space-around;
+    gap: 20px;
+  }
+  .restaurant-summary > img {
+    width : 50%;
+  }
+  .restaurant-details , .restaurant-menu > h3{
+    font-size: x-large;
+  }
+  .menu-Card{
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .flex{
+    width: 50%;
+  }
+  .menu-Card > img{
+    max-width: 330px;
+    max-height: 200px;
+  }
+}
