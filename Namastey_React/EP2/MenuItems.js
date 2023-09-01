@@ -3,7 +3,7 @@ import { AiFillStar } from "react-icons/ai";
 import { ITEM_IMG_CDN_URL } from "./config";
 import dummyImg from "./assets/images/dummy.png";
 const MenuItems = (props) => {
-
+  console.log(props)
   const {
     name,
     description,

@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { useParams } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
 
 import { IMG_CDN_URL } from "./config";
-import MenuItems from "./MenuItems";
+// import MenuItems from "./MenuItems";
 import useMenu from "./utils/useMenu";
+
+const MenuItems = lazy(() => import("./MenuItems"))
 
 const Menu = () => {
   const [menu, setMenu] = useState([]);
@@ -52,7 +54,7 @@ const Menu = () => {
         <h3>Menu</h3>
         <h3>{menu.length} Items</h3>
         {menu.map((item) => {
-          return <MenuItems menuItem={item} />;
+          return <Suspense key = {item?.id}><MenuItems menuItem={item} /></Suspense>;
         })}
       </div>
     </div>
