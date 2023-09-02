@@ -1,9 +1,14 @@
-import React from "react";
+import React , {useContext , useState} from "react";
 import { AiFillStar } from "react-icons/ai";
 import { IMG_CDN_URL } from "./config";
+import userContext from "./utils/userContext";
 
 const RestaurantCard = (props) => {
-  //   console.log(props);
+  
+  const {user ,setUser} = useContext(userContext);
+
+    console.log(user);
+    
   const {
     id,
     name,
@@ -14,11 +19,16 @@ const RestaurantCard = (props) => {
     areaName,
     costForTwo,
     sla,
+    
   } = props?.restaurant;
 
   return (
     <>
-      <div className="card">
+      <div className="card box">
+    
+  
+
+   
         <img src={IMG_CDN_URL + cloudinaryImageId} alt={cloudinaryImageId} />
         <h3>{name}</h3>
         <h5>{cuisines.join(", ")}</h5>
@@ -33,6 +43,7 @@ const RestaurantCard = (props) => {
           </span>
           <h4>{costForTwo ?? "₹200 for two"}</h4>
         </div>
+        <h4>{user.name}</h4>
       </div>
     </>
   );

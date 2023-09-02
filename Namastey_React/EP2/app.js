@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Header from "./Header";
 // import { res, swiggy_api_URL } from "./config";
 import RestaurantCard from "./RestaurantCard";
@@ -7,11 +7,17 @@ import { Link } from "react-router-dom";
 import useRestaurant from "./utils/useRestaurent";
 import { filterData } from "./utils/functions";
 import useOnline from "./utils/useOnline";
+import userContext from "./utils/userContext";
 
 const app = () => {
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
   const [searchText, setSearchText] = useState("");
+
+  const [user, setUser] = useState({
+    name: "Himanshu",
+    email: "john@doe",
+  });
   const restaurant = useRestaurant();
 
   useEffect(() => {
@@ -21,14 +27,20 @@ const app = () => {
 
   const isOnline = useOnline();
 
-  if(!isOnline) return (<div className="offline"><h1>Check Your Internet connection and try again!!!</h1></div>);
+  if (!isOnline)
+    return (
+      <div className="offline">
+        <h1>Check Your Internet connection and try again!!!</h1>
+      </div>
+    );
 
   // early return is there is no restaurant
-  if(!filteredRestaurant) return null;
+  if (!filteredRestaurant) return null;
 
   return (
-    <>
-      {/* <Header/> */}
+    <userContext.Provider value={{user,setUser}}>
+      <Header/>
+
       <div className="search">
         <input
           type="text"
@@ -62,7 +74,7 @@ const app = () => {
           );
         })}
       </div>
-    </>
+    </userContext.Provider>
   );
 };
 

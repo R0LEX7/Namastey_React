@@ -1,14 +1,15 @@
-import React, { useState, useEffect, lazy, Suspense } from "react";
+import React, { useState, useEffect, lazy, Suspense , useContext } from "react";
 import { useParams } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
-
 import { IMG_CDN_URL } from "./config";
-// import MenuItems from "./MenuItems";
+import userContext from "./utils/userContext";
 import useMenu from "./utils/useMenu";
 
 const MenuItems = lazy(() => import("./MenuItems"))
 
 const Menu = () => {
+  const {user ,setUser} = useContext(userContext);
+  console.log(setUser);
   const [menu, setMenu] = useState([]);
   const [restaurant, setRestaurant] = useState(null);
   const { id } = useParams();
@@ -20,9 +21,13 @@ const Menu = () => {
     setMenu(data[1]);
   }, [data]);
 
+  // console.log(restaurant)
+
   return (
     <div className="main">
+      
       <div className="restaurant-summary">
+      {restaurant?.hasBestsellerItems  && <div class="ribbon"><span>best seller</span></div>}
         <img src={IMG_CDN_URL + restaurant?.cloudinaryImageId} alt="" />
         <div className="restaurant-details">
           <h3>{restaurant?.name}</h3>
