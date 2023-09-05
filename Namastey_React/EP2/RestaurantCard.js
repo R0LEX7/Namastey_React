@@ -1,13 +1,11 @@
-import React , {useContext , useState} from "react";
+import React , { useState} from "react";
 import { AiFillStar } from "react-icons/ai";
 import { IMG_CDN_URL } from "./config";
-import userContext from "./utils/userContext";
+
 
 const RestaurantCard = (props) => {
   
-  const {user ,setUser} = useContext(userContext);
 
-    console.log(user);
     
   const {
     id,
@@ -43,7 +41,7 @@ const RestaurantCard = (props) => {
           </span>
           <h4>{costForTwo ?? "₹200 for two"}</h4>
         </div>
-        <h4>{user.name}</h4>
+        
       </div>
     </>
   );

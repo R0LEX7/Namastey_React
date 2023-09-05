@@ -2,13 +2,12 @@ import React  , {useContext}from "react";
 import { AiFillStar } from "react-icons/ai";
 import { ITEM_IMG_CDN_URL } from "./config";
 import dummyImg from "./assets/images/dummy.png";
-import userContext from "./utils/userContext";
-import useMenu from "./utils/useMenu";
+// import userContext from "./utils/userContext";
+
 
 
 const MenuItems = (props) => {
-  const {user ,setUser} = useContext(userContext);
-  console.log(setUser);
+
   const {
     name,
     description,

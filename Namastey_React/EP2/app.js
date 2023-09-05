@@ -1,24 +1,29 @@
 import React, { useEffect, useState, useContext } from "react";
 import Header from "./Header";
-// import { res, swiggy_api_URL } from "./config";
+import { ThemeProvider } from '@mui/material/styles';
 import RestaurantCard from "./RestaurantCard";
 import { BsSearch } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import useRestaurant from "./utils/useRestaurent";
 import { filterData } from "./utils/functions";
 import useOnline from "./utils/useOnline";
-import userContext from "./utils/userContext";
+import { UserAuthContextProvider, useUserAuth  , userAuthContext} from "./Config/userAuthPhone.js"; 
+
+import muiTheme from "./utils/muiTheme";
+
+
+
+
 
 const app = () => {
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
   const [searchText, setSearchText] = useState("");
 
-  const [user, setUser] = useState({
-    name: "Himanshu",
-    email: "john@doe",
-  });
+
   const restaurant = useRestaurant();
+
+  const {setUpRecaptcha , logOut} = useUserAuth();
 
   useEffect(() => {
     setFilteredRestaurant(restaurant);
@@ -37,9 +42,13 @@ const app = () => {
   // early return is there is no restaurant
   if (!filteredRestaurant) return null;
 
+ 
+
   return (
-    <userContext.Provider value={{user,setUser}}>
+    
+    <ThemeProvider theme={muiTheme}>
       <Header/>
+      
 
       <div className="search">
         <input
@@ -74,7 +83,8 @@ const app = () => {
           );
         })}
       </div>
-    </userContext.Provider>
+    </ThemeProvider>
+    
   );
 };
 

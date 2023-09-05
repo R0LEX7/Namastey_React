@@ -1,5 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&family=Poppins:wght@300;400;500;600&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&family=Poppins:wght@300;400;500;600&display=swap");
 
 
 * {
@@ -7,10 +10,13 @@
   font-family: "Montserrat", sans-serif;
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
+  --primary : #0F0F14;
+  --background : #08080b;
+  --font-color : #d6cdcd
 }
 
 body {
-  background-color: #08080b;
+  background-color: var(--background);
 }
 
 .navbar {
@@ -306,6 +312,126 @@ a {
     border-radius: 5px;
 }
 
+/* offline  */
+
+.offline{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width : 100vw;
+  height: 100vh;
+}
+
+/* stars */
+path{
+  color: gold;
+  font-size: 16px;
+}
+
+.mui > .accordion {
+  background-color: var(--background);
+}
+
+/* authentication */
+.form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: 100%; */
+  height: 100vh;
+  padding :0  20px;
+  flex-direction: column;
+  gap:20px;
+}
+.form-box{
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--primary);
+  color: white ;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.form-box > .div{
+  /* height:50px; */
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #48494a;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.form-box > input , .div > input , .PhoneInputInput{
+  color: var(--font-color) ;
+  outline: none;
+  width: 11rem;
+  height: 23px;
+  background-color: #0f0f14;
+  color: whitesmoke;
+  padding: 3px;
+  font-size: 1rem;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  padding: 14px 15px 14px 20px;
+  border: none;
+}
+
+.div > svg , .PhoneInputCountry > select{
+  font-size: 1.8rem;
+  margin: 0 0 -6px 0;
+  font-weight: lighter;
+}
+
+.flexBtn{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 0.2rem;
+  align-items: center;
+  flex-direction: column;
+}
+.form-box > .flexBtn > button , a > button {
+  width: 260px;
+  height: 40px;
+  border: 1px solid #48494a;
+  background-color: #0f0f14;
+  color: whitesmoke;
+  cursor: pointer;
+  padding: 3px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  text-transform: capitalize;
+}
+
+.form-box > button:hover , a > button:hover{
+  background-color: var(--background);
+}
+p{
+  color: var(--font-color);
+  background-color: var(--primary);
+}
+
+.btn-grp{
+  background-color: var(--primary);
+
+}
+.btn-grp > .btn{
+  color:var(--font-color)
+}
+/* Desktop styles */
+/* These styles apply to screens with a width of 1024px and above */
+
 @media (min-width: 768px) and (max-width: 1023px) {
     .restaurants {
         flex-direction: row;
@@ -340,33 +466,19 @@ a {
         max-width: 330px;
         max-height: 200px;
       }
+      .form{
+        padding: 0;
+      }
+      .form-box > div{
+        width: auto;
+      }
 }
-
-/* offline  */
-
-.offline{
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width : 100vw;
-  height: 100vh;
-}
-
-/* stars */
-path{
-  color: gold;
-  font-size: 16px;
-}
-
-/* Desktop styles */
-/* These styles apply to screens with a width of 1024px and above */
 @media (min-width: 1024px) {
   .restaurants {
     flex-direction: row;
     justify-content: space-evenly;
   }
-
+  
   .search > input {
     width: 40%;
   }
@@ -394,5 +506,15 @@ path{
   .menu-Card > img{
     max-width: 330px;
     max-height: 200px;
+  }
+  .form{
+    padding: 0;
+  }
+  .form-box{
+    width: 350px;
+    padding: 20px ;
+  }
+  .form-box > .div{
+    width: auto;
   }
 }
