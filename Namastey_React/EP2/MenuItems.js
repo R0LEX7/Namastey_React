@@ -7,6 +7,7 @@ import dummyImg from "./assets/images/dummy.png";
 
 
 const MenuItems = (props) => {
+  console.log(props)
 
   const {
     name,
@@ -41,8 +42,8 @@ const MenuItems = (props) => {
               <AiFillStar />
               {newRating ? newRating : "NA"}
             </span>
-            <h3>₹ {newPrice}</h3>
-            <button>Add</button>
+            <h3> {price ? '₹' + newPrice :"Not available"}</h3>
+            {price && <button> Add</button>}
           </div>
         </div>
       </div>
