@@ -9,8 +9,7 @@ import { purple, red } from '@mui/material/colors';
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@emotion/react";
 
-const primary = red[500]; // #f44336
-const accent = purple['A200']; // #e040fb
+
 
 const Authentication = () => {
 
@@ -54,14 +53,15 @@ const theme = createTheme({
       }
     });
   }, []);
-
+  
   const [alignment, setAlignment] = useState('register');
-
+  
   const handleChange = (event, newAlignment) => {
     if (newAlignment !== null) {
       setAlignment(newAlignment);
     }
   };
+  console.log(user);
   return (
     <ThemeProvider theme={theme}>
 

@@ -41,14 +41,13 @@ const SignUp = () => {
 
   const handleSubmit = async () => {
     if (email === "" || password === undefined || password === "") {
-      console.log("Invalid input");
       handleClick("error", "Fill both the fields."); // Show an error Snackbar
       return;
     }
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       console.log(res);
-      handleClick("success", "Log in Successfully!"); // Show a success Snackbar
+      handleClick("success", "Registered Successfully!"); // Show a success Snackbar
     } catch (err) {
       console.error(err);
       const errorMessage = err.message || "An error occurred.";

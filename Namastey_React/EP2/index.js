@@ -15,6 +15,7 @@ import '@fontsource/montserrat/500.css'; // Medium
 import '@fontsource/montserrat/700.css'; // Bold
 import Authentication from './Auth/authentication';
 import SignIn from './Auth/SignIn';
+import CartPage from './CartPage';
 
 
 
@@ -31,6 +32,9 @@ const router = createBrowserRouter([{
 },{
     path: '/signup',
     element: <SignIn/>
+},{
+    path: '/cart',
+    element: <CartPage/>
 }
 ])
 
