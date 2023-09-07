@@ -303,7 +303,7 @@ a {
 }
 
 .menu-Card > img {
-  width: 100%;
+  /* width: 100%; */
   border-radius: 10px;
 }
 
@@ -404,7 +404,7 @@ path{
   align-items: center;
   flex-direction: column;
 }
-.form-box > .flexBtn > button , a > button {
+.form-box > .flexBtn > button , a > button  , .cart-header > button{
   width: 260px;
   height: 40px;
   border: 1px solid #48494a;
@@ -419,7 +419,7 @@ path{
   text-transform: capitalize;
 }
 
-.form-box > button:hover , a > button:hover{
+.form-box > button:hover , a > button:hover ,.cart-header > button:hover{
   background-color: var(--background);
 }
 p{
@@ -434,8 +434,56 @@ p{
 .btn-grp > .btn{
   color:var(--font-color)
 }
+
+.cart{
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  flex-direction: column;
+}
+
+.cart-header{
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+  border-bottom: dashed 1px #4f4e4e;
+  height:60px;
+}
+
+.cart-header > h1{
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.cart-header > button{
+ width:150px;
+}
+
+.cart-card{
+  margin:  10px;
+  width : 80%;
+  border-bottom: dashed 1px #d6cdcd;
+  padding: 10px 10px 32px 10px;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  flex-direction: row;
+  gap: 5px;
+  text-align: center;
+}
+
+.cart-card > img{
+  width: 80px;
+  border-radius: 5px;
+}
+
+
 /* Desktop styles */
 /* These styles apply to screens with a width of 1024px and above */
+
+ 
 
 @media (min-width: 768px) and (max-width: 1023px) {
     .restaurants {
@@ -476,6 +524,9 @@ p{
       }
       .form-box > div{
         width: auto;
+      }
+      .menu{
+        margin: 0 100px;
       }
 }
 @media (min-width: 1024px) {
@@ -521,5 +572,8 @@ p{
   }
   .form-box > .div{
     width: auto;
+  }
+  .menu{
+    margin: 0 150px;
   }
 }

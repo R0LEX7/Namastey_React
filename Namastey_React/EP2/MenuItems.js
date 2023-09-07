@@ -30,7 +30,7 @@ const MenuItems = (props) => {
     ratings,
   } = props.menuItem;
   const newRating = ratings?.aggregatedRating?.rating;
-  const newPrice = Math.floor(price / 100);
+  const newPrice = price / 100;
 
 /* setting toast */
   const [open, setOpen] = useState(false);
@@ -64,26 +64,35 @@ const MenuItems = (props) => {
   }, []);
 
   const addItemToCart = () => {
-    if(user === null) {
-      handleClick("info" , "Please Login for add to cart")
+    if (user === null) {
+      handleClick("info", "Please Login for add to cart");
       return;
-    }else{
+    } else {
       const db = getDatabase();
       const newItem = {
-      name: name,
-      price: newPrice,
-      quantity: 1,
-    };
-
-    const cartRef = ref(db, `carts/${user.uid}/`);
-
-  // Use push to add a new item to the user's cart
-    const newItemRef = push(cartRef, newItem);
-    handleClick("success" , "Item added to cart successfully")
-
-    console.log("Added to cart with key:", newItemRef.key);
+        name: name,
+        price: newPrice,
+        quantity: 1,
+        rating: ratings || 0,
+        imageId: imageId || "",
+        isVeg: isVeg || false,
+      };
+  
+      const cartRef = ref(db, `carts/${user.uid}/`);
+  
+      try {
+        // Use push to add a new item to the user's cart
+        const newItemRef = push(cartRef, newItem);
+        handleClick("success", "Item added to cart successfully");
+  
+        console.log("Added to cart with key:", newItemRef.key);
+      } catch (error) {
+        console.error("Error adding item to cart:", error);
+        handleClick("error", "An error occurred while adding the item to the cart");
+      }
     }
   };
+  
 
   return (
     <>
@@ -105,7 +114,7 @@ const MenuItems = (props) => {
               <AiFillStar />
               {newRating ? newRating : "NA"}
             </span>
-            <h3> {price ? "₹" + newPrice : "Not available"}</h3>
+            <h3> {price ? "₹" + newPrice +".00": "Not available"}</h3>
             {price && <button onClick={addItemToCart}> Add</button>}
           </div>
         </div>

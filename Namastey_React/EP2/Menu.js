@@ -57,9 +57,12 @@ const Menu = () => {
       <div className="restaurant-menu">
         <h3>Menu</h3>
         <h3>{menu.length} Items</h3>
+        <div className="menu">
+
         {menu.map((item) => {
           return <Suspense key = {item?.id}><MenuItems menuItem={item} /></Suspense>;
         })}
+        </div>
       </div>
     </div>
   );
