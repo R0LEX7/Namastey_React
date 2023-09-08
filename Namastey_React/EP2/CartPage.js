@@ -87,9 +87,12 @@ const CartPage = () => {
               <h1>Cart</h1>{" "}
               <button onClick={() => clearCart(user)}>Clear Cart</button>
             </div>
+ <div className="cart-row">
+ <div className="cart-items">
             {cartItems.map((item, index) => {
               return <CartItem item={item} itemKey={item.key} key={index} />;
             })}
+              </div>
             <div className="pricing">
               <div className="pricing-details">
                 <h3>price :</h3>
@@ -102,8 +105,9 @@ const CartPage = () => {
                 <h3>+₹{gstPrice}</h3>
                 <h3>+₹50</h3>
                 <h3>₹{totalPrice}</h3>
-              </div>
             </div>
+            </div>
+ </div>
           </div>
         </>
       )}

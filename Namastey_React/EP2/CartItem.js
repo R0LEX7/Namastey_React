@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { ITEM_IMG_CDN_URL } from "./config";
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, ref, set , remove } from "firebase/database";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Config/firebase-config";
+import { AiFillDelete } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
 
 import dummyImg from "./assets/images/dummy.png";
 
@@ -22,9 +24,7 @@ const CartItem = (props) => {
         setUser(null);
       }
     });
-    
   }, []);
-
 
   const db = getDatabase();
   const handleIncreaseQuantity = () => {
@@ -50,6 +50,11 @@ const CartItem = (props) => {
     }
   };
 
+  const handleDelete = () => {
+    const itemRef = ref(db , `carts/${user.uid}/${item.key}`);
+    remove(itemRef);
+  }
+
   return (
     <>
       <div className="cart-card">
@@ -59,6 +64,13 @@ const CartItem = (props) => {
             src={item?.imageId ? ITEM_IMG_CDN_URL + item?.imageId : dummyImg}
             alt={item?.imageId || "dummy"}
           />
+          <div className="row">
+            <h4>{item.isVeg?("Veg") : ("Non-Veg")}</h4>
+            <span><AiFillStar/>{item.rating.aggregatedRating.rating}</span>
+            <button onClick={handleDelete}>
+              <AiFillDelete />
+            </button>
+          </div>
           <div className="row">
             <h4>₹{item?.price}</h4>
             <h4>Quantity: {item?.quantity}</h4>
