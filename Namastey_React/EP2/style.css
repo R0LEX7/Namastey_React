@@ -193,7 +193,10 @@ a {
 .restaurant-menu > h4 ,
 .menu-Card > h3,
 .menu-Card > h5, 
-.menu-Card > h4{
+.menu-Card > h4 ,
+.cart-card > h1,
+.row > h3 ,
+.row> h4{
   margin: 0px;
 }
 .card > h5 {
@@ -407,11 +410,11 @@ path{
 .form-box > .flexBtn > button , a > button  , .cart-header > button{
   width: 260px;
   height: 40px;
+  padding: 3px;
   border: 1px solid #48494a;
   background-color: #0f0f14;
   color: whitesmoke;
   cursor: pointer;
-  padding: 3px;
   font-size: 1rem;
   box-sizing: border-box;
   border-radius: 5px;
@@ -474,13 +477,80 @@ p{
   text-align: center;
 }
 
-.cart-card > img{
-  width: 80px;
+.cart-card > h1 , .row > h4{
+  font-size: 1.3rem;
+  font-weight: 400;
+  font-family: cursive;
+  margin-bottom: 8px;
+}
+
+.row > h4{
+  font-size: 1rem;
+  margin: 0;
+}
+
+
+.item-details > img{
+  width: 120px;
   border-radius: 5px;
 }
 
 .item-details{
-  
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.item-details > row{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.row > .row-btn{
+  width:80px;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #48494a;
+  background-color: #0f0f14;
+  color: whitesmoke;
+  font-size: 1rem;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  margin-top : 10px; 
+}
+
+.row-btn > button{
+  background-color: #0f0f14;
+  color: whitesmoke;
+  cursor: pointer;
+  font-size: 1rem;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: none;
+  /* box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08); */
+}
+
+.pricing {
+  width:100%;
+  text-transform: capitalize;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+}
+
+.pricing-details> h3{
+  font-family: cursive;
+
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 
