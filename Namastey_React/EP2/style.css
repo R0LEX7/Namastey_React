@@ -469,7 +469,7 @@ p{
   display: flex;
   align-items: center;
   /* justify-content: center; */
-  flex-direction: row;
+  flex-direction: column;
   gap: 5px;
   text-align: center;
 }
@@ -477,6 +477,10 @@ p{
 .cart-card > img{
   width: 80px;
   border-radius: 5px;
+}
+
+.item-details{
+  
 }
 
 

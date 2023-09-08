@@ -24,14 +24,14 @@ const CartPage = () => {
 
   }, []);
 
-  useEffect(()=> {
+  useEffect(() => {
     if (cartItems.length > 0 && user) {
-        getCartPrice();
-        setGstPrice(cartPrice/100*18);
-        setTotalPrice(cartPrice + gstPrice + 50)
+      getCartPrice();
+      
     }
-  },[user , cartItems]);
-
+  }, [user, cartItems]);
+  
+  
   const db = getDatabase();
   const getCartItems = (user) => {
     const cartRef = ref(db, `carts/${user.uid}/`);
@@ -64,6 +64,10 @@ const CartPage = () => {
         return acc + item?.price * item?.quantity;
     }, 0)
     setCartPrice(totalPrice);
+    const gst = (totalPrice * 0.18); // Calculate GST as 18% of cartPrice
+    const total = totalPrice + gst + 50;
+    setGstPrice(gst);
+    setTotalPrice(total);
   };
 
   console.log(cartPrice);
@@ -84,10 +88,18 @@ const CartPage = () => {
               return <CartItem key={index} item={item} />;
             })}
             <div className="pricing">
-                <h3>price :   {cartPrice}</h3>
-                <h3>GST :   + {gstPrice}</h3>
-                <h3>Delivery :   + 50</h3>
-                <h3>price :    {totalPrice}</h3>
+               <div className="pricing-details">
+               <h3>price :</h3>
+                <h3>GST :</h3>
+                <h3>Delivery :</h3>
+                <h3>price :</h3>
+               </div>
+               <div className="pricing-details">
+               <h3>{cartPrice}</h3>
+                <h3>+ {gstPrice}</h3>
+                <h3>+ 50</h3>
+                <h3>{totalPrice}</h3>
+               </div>
             </div>
           </div>
         </>

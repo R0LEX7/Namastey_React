@@ -9,13 +9,20 @@ const CartItem = (props) => {
   return (
     <>
     <div className="cart-card">
+      <h1>{item?.name}</h1>
+    <div className="item-details">
     <img
           src={item?.imageId ? ITEM_IMG_CDN_URL +item?.imageId : dummyImg}
           alt={item?.imageId || "dummy"}
         />
-        <h1>{item?.name}</h1>
+<div className="row">
+<img
+          src={item?.imageId ? ITEM_IMG_CDN_URL +item?.imageId : dummyImg}
+          alt={item?.imageId || "dummy"}
+        />
         <h3>{item?.price}</h3>
-        <h4>Quantity: {item?.quantity}</h4>
+        <h4>Quantity: {item?.quantity}</h4></div>
+    </div>
     </div>
     </>
   )
