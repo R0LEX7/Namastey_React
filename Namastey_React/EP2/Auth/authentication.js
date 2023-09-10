@@ -89,10 +89,10 @@ const theme = createTheme({
             </>
       
       ):(
-        <>
+        <div className="about-user">
       <h1> hello {user.email}</h1>
       <button onClick={() => signOut(auth)}>log out</button>
-      </>
+      </div>
     )}</div>
     </ThemeProvider>
   )

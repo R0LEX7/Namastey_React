@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Header from "./Header";
 import { ThemeProvider } from '@mui/material/styles';
 import RestaurantCard from "./RestaurantCard";
@@ -10,6 +10,9 @@ import useOnline from "./utils/useOnline";
 import { UserAuthContextProvider, useUserAuth  , userAuthContext} from "./Config/userAuthPhone.js"; 
 
 import muiTheme from "./utils/muiTheme";
+import LabelBottomNavigation from "./LabelBottomNavigation";
+import Layout from "./Layout";
+import Footer from "./Footer";
 
 
 
@@ -23,7 +26,7 @@ const app = () => {
 
   const restaurant = useRestaurant();
 
-  const {setUpRecaptcha , logOut} = useUserAuth();
+  const searchInputRef = useRef(null);
 
   useEffect(() => {
     setFilteredRestaurant(restaurant);
@@ -47,7 +50,7 @@ const app = () => {
   return (
     
     <ThemeProvider theme={muiTheme}>
-      <Header/>
+     
       
 
       <div className="search">
@@ -56,6 +59,7 @@ const app = () => {
           placeholder={"Search ..."}
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
+          ref={searchInputRef}
         />
         <button
           onClick={() => {
@@ -83,7 +87,11 @@ const app = () => {
           );
         })}
       </div>
+      <Footer/>
+      <LabelBottomNavigation searchInputRef={searchInputRef} />
+
     </ThemeProvider>
+      
     
   );
 };
