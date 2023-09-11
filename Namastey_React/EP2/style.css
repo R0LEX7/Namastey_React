@@ -467,7 +467,7 @@ button {
 }
 .form-box > .flexBtn > button,
 a > button,
-.cart-header > button {
+.cart-header > button , .column > button {
   width: 260px;
   height: 40px;
   padding: 3px;
@@ -951,6 +951,86 @@ p {
   background-color: var(--background);
 }
 
+/* empty cart */
+
+.empty-cart{
+  width:100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.empty-cart > img{
+  border-radius: 5px;
+  width: 15rem;
+}
+
+.column{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  /* width: 50%; */
+  height: 75vh;
+}
+
+.column > button {
+  margin-top: 10px;
+}
+
+.payment-container{
+  
+}
+
+/* Style for the container */
+.payment-container {
+  margin: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* Style for the heading */
+.payment-container h2 {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  font-family: cursive;
+}
+
+/* Style for the radio buttons and labels */
+.payment-container  input[type="radio"] {
+  display: none;
+  
+}
+
+.payment-container  label {
+  width: 140px;
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px 20px;
+  margin: 5px;
+  color: var(--font-color);
+  background-color: var(--background);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transform: scale(0.9);
+}
+
+.payment-container  input[type="radio"]:checked + label {
+  background-color: var(--primary);
+  transform: scale(1);
+  color: #fff;
+  transition: 0.3s ease-out;
+}
+
+
+
+
+
 /* Desktop styles */
 /* These styles apply to screens with a width of 1024px and above */
 
@@ -1019,7 +1099,7 @@ p {
     width: 50%;
   }
   .pricing {
-    width: 50%;
+    /* width: 50%; */
     /* height: 500px; */
   }
   .custom-bottom-nav {
@@ -1032,6 +1112,14 @@ p {
     background-color: var(--primary);
     margin: 10px 0;
   }
+
+  .empty-cart > img{
+  border-radius: 5px;
+  width: 30%;
+}
+.column{
+  width: 50%;
+}
 }
 @media (min-width: 1024px) {
   .restaurants {
@@ -1102,10 +1190,14 @@ p {
     height: 100vh;
   }
   .pricing {
-    width: 50%;
+    /* width: 50%; */
     /* height: 500px; */
     align-items: flex-start;
-    height: 95vh;
+    /* height: 95vh; */
+  }
+
+  .column{
+    width: 50%;
   }
 
   .custom-bottom-nav {
@@ -1118,4 +1210,9 @@ p {
     background-color: var(--primary);
     margin: 10px 0;
   }
+
+  .empty-cart > img{
+  border-radius: 5px;
+  width: 30%;
+}
 }

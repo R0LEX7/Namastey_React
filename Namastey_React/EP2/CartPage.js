@@ -3,6 +3,10 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Config/firebase-config";
 import { getDatabase, ref, onValue, remove } from "firebase/database";
 import CartItem from "./CartItem";
+import emptyCartImg from "./assets/images/emptyCart.png";
+import Snackbar from "@mui/material/Snackbar";
+import { Alert } from "./Alerts/SnackbarAlert";
+import Footer from "./Footer";
 // import firebase
 
 const CartPage = () => {
@@ -74,7 +78,25 @@ const CartPage = () => {
     setTotalPrice(total);
   };
 
-  // console.log(cartPrice);
+  // for payment 
+  const [selectedMethod, setSelectedMethod] = useState("cashOnDelivery");
+
+  const handleMethodChange = (event) => {
+    setSelectedMethod(event.target.value);
+  };
+
+  const handlePayment = () => {
+    // Implement your payment logic here based on the selectedMethod
+    if (selectedMethod === "cashOnDelivery") {
+      // Handle Cash on Delivery
+      console.log("cod")
+    } else if (selectedMethod === "upi") {
+      // Handle UPI payment
+      console.log("upi")
+    }else{
+      console.log("select payment method")
+    }
+  };
 
   return (
     <>
@@ -82,35 +104,75 @@ const CartPage = () => {
         <h1>login please</h1>
       ) : (
         <>
-          {cartItems.length > 0 (
-                      <div className="cart">
-                      <div className="cart-header">
-                        <h1>Cart</h1>{" "}
-                        <button onClick={() => clearCart(user)}>Clear Cart</button>
-                      </div>
-           <div className="cart-row">
-           <div className="cart-items">
-                      {cartItems.map((item, index) => {
-                        return <CartItem item={item} itemKey={item.key} key={index} />;
-                      })}
-                        </div>
-                      <div className="pricing">
-                        <div className="pricing-details">
-                          <h3>price :</h3>
-                          <h3>GST :</h3>
-                          <h3>Delivery :</h3>
-                          <h3>total price :</h3>
-                        </div>
-                        <div className="pricing-details">
-                          <h3>₹{cartPrice}</h3>
-                          <h3>+₹{gstPrice}</h3>
-                          <h3>+₹50</h3>
-                          <h3>₹{totalPrice}</h3>
-                      </div>
-                      </div>
-           </div>
-                    </div>
-          ) : (<p>Empty Cart!!</p>)}
+          {cartItems.length > 0 ? (
+            <div className="cart">
+              <div className="cart-header">
+                <h1>Cart</h1>{" "}
+                <button onClick={() => clearCart(user)}>Clear Cart</button>
+              </div>
+              <div className="cart-row">
+                <div className="cart-items">
+                  {cartItems.map((item, index) => {
+                    return (
+                      <CartItem item={item} itemKey={item.key} key={index} />
+                    );
+                  })}
+                </div>
+                <div className="column">
+
+                <div className="pricing">
+                  <div className="pricing-details">
+                    <h3>price :</h3>
+                    <h3>GST :</h3>
+                    <h3>Delivery :</h3>
+                    <h3>total price :</h3>
+                  </div>
+                  <div className="pricing-details">
+                    <h3>₹{cartPrice}</h3>
+                    <h3>+₹{gstPrice}</h3>
+                    <h3>+₹50</h3>
+                    <h3>₹{totalPrice}</h3>
+                  </div>
+                </div>
+                <div className="payment-container">
+      <h2>Select Payment Method</h2>
+      <div>
+        <input
+          type="radio"
+          id="cashOnDelivery"
+          name="paymentMethod"
+          value="cashOnDelivery"
+          checked={selectedMethod === "cashOnDelivery"}
+          onChange={handleMethodChange}
+        />
+        <label htmlFor="cashOnDelivery">Cash on Delivery</label>
+      </div>
+      <div>
+        <input
+          type="radio"
+          id="upi"
+          name="paymentMethod"
+          value="upi"
+          checked={selectedMethod === "upi"}
+          onChange={handleMethodChange}
+        />
+        <label htmlFor="upi">UPI</label>
+      </div>
+      {selectedMethod === "upi" ?(console.log("display when upi selected")) : (console.log("fuck")) }
+      <button onClick={handlePayment}>Proceed to Payment</button>
+    </div>
+                 <button>Order</button>
+                </div>
+
+
+              </div>
+            </div>
+          ) : (
+            <div className="empty-cart">
+              <img src={emptyCartImg} alt="emptyCart" />
+            </div>
+          )}
+          <Footer />
         </>
       )}
     </>
