@@ -17,7 +17,6 @@ import { auth } from "./Config/firebase-config";
 // });
 
 const MenuItems = (props) => {
-  console.log(props);
 
   const {
     name,
@@ -85,9 +84,8 @@ const MenuItems = (props) => {
         const newItemRef = push(cartRef, newItem);
         handleClick("success", "Item added to cart successfully");
   
-        console.log("Added to cart with key:", newItemRef.key);
+        
       } catch (error) {
-        console.error("Error adding item to cart:", error);
         handleClick("error", "An error occurred while adding the item to the cart");
       }
     }

@@ -11,8 +11,8 @@ import { UserAuthContextProvider, useUserAuth  , userAuthContext} from "./Config
 
 import muiTheme from "./utils/muiTheme";
 import LabelBottomNavigation from "./LabelBottomNavigation";
-import Layout from "./Layout";
 import Footer from "./Footer";
+
 
 
 
@@ -88,7 +88,8 @@ const app = () => {
         })}
       </div>
       <Footer/>
-      <LabelBottomNavigation searchInputRef={searchInputRef} />
+      <LabelBottomNavigation/>
+      
 
     </ThemeProvider>
       

@@ -1,7 +1,7 @@
 import React, { useState} from "react";
 import { HiOutlineMail } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 import {
   signOut,
   createUserWithEmailAndPassword
@@ -18,6 +18,8 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 // function component
 const SignUp = () => {
+
+  const navigate = useNavigate();
     const [open, setOpen] = useState(false);
   const [alertSeverity, setAlertSeverity] = useState("success");
   const [alertMessage, setAlertMessage] = useState("");
@@ -48,6 +50,9 @@ const SignUp = () => {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       console.log(res);
       handleClick("success", "Registered Successfully!"); // Show a success Snackbar
+      setTimeout(() => {
+        navigate('/about-user')
+      }, 2000)
     } catch (err) {
       console.error(err);
       const errorMessage = err.message || "An error occurred.";
@@ -71,7 +76,7 @@ const SignUp = () => {
             autoComplete="on"
           />
         </div>
-        <form className="div">
+        <div className="div">
           <RiLockPasswordLine />
           <input
             type="password"
@@ -80,10 +85,10 @@ const SignUp = () => {
             onChange={(e) => setPassword(e.target.value)}
             autoComplete="on"
           />
-        </form>
+        </div>
 
         <div className="flexBtn">
-          <button onClick={() => handleSubmit()}>Register</button>
+          <button onClick={() => handleSubmit()}>Submit</button>
           <p>--OR--</p>
           <Link to="/">
             <button>cancel</button>

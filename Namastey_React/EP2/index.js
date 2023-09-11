@@ -8,16 +8,14 @@ import "@fontsource/poppins/300.css"; // Light
 import "@fontsource/poppins/400.css"; // Regular
 import "@fontsource/poppins/500.css"; // Medium
 import "@fontsource/poppins/700.css"; // Bold
-
 import "@fontsource/montserrat/300.css"; // Light
 import "@fontsource/montserrat/400.css"; // Regular
 import "@fontsource/montserrat/500.css"; // Medium
 import "@fontsource/montserrat/700.css"; // Bold
 import Authentication from "./Auth/authentication";
-import SignIn from "./Auth/SignIn";
 import CartPage from "./CartPage";
-import LabelBottomNavigation from "./LabelBottomNavigation";
 import Layout from "./Layout";
+import AboutUser from "./Auth/AboutUser";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -28,7 +26,7 @@ const router = createBrowserRouter([
         
           <>
           <App/>
-          <Layout/>
+          
           </>
         
       ),
@@ -59,7 +57,10 @@ const router = createBrowserRouter([
         <Layout></Layout>
         </>
       ),
-    },
+    },{
+      path: "/about-user",
+      element: <AboutUser/>
+    }
   ]);
 
 root.render(<RouterProvider router={router} />);

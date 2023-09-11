@@ -43,7 +43,7 @@ const Footer = () => {
                 <p>
                   Made By <i className="icon_heart"><AiFillHeart/></i> 
                   
-                      Himanshu Kumar Gola
+                      Himanshu.dev
                   
                 </p>
               </div>

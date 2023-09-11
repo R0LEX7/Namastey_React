@@ -2,8 +2,9 @@ import React, { useState, useEffect, lazy, Suspense , useContext } from "react";
 import { useParams } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
 import { IMG_CDN_URL } from "./config";
-
+import Footer from "./Footer";
 import useMenu from "./utils/useMenu";
+import LabelBottomNavigation from "./LabelBottomNavigation";
 
 const MenuItems = lazy(() => import("./MenuItems"))
 
@@ -64,6 +65,8 @@ const Menu = () => {
         })}
         </div>
       </div>
+      <Footer/>
+      <LabelBottomNavigation/>
     </div>
   );
 };

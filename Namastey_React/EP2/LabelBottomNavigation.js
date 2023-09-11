@@ -4,18 +4,12 @@ import { AiOutlineHome, AiOutlineShoppingCart } from 'react-icons/ai';
 import { VscAccount } from 'react-icons/vsc';
 import { BsSearch } from 'react-icons/bs';
 
-export default function LabelBottomNavigation({ searchInputRef }) {
+export default function LabelBottomNavigation() {
   const location = useLocation();
 
   
 
-  const handleSearchClick = () => {
-    // Focus on the search input when the "Search" button is clicked
-    console.log('Clicked'); 
-    if (searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-  };
+
 
   return (
     <div className="navbar-box">
@@ -24,22 +18,17 @@ export default function LabelBottomNavigation({ searchInputRef }) {
       <ul>
         <li>
           <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
-            <AiOutlineHome />
+            <AiOutlineHome /> <span>home</span>
           </Link>
-        </li>
-        <li onClick={handleSearchClick}>
-          
-            <BsSearch />
-          
         </li>
         <li>
           <Link to="/cart" className={location.pathname === '/cart' ? 'active' : ''}>
-            <AiOutlineShoppingCart />
+            <AiOutlineShoppingCart /> <span>cart</span>
           </Link>
         </li>
         <li>
           <Link to="/authentication" className={location.pathname === '/authentication' ? 'active' : ''}>
-            <VscAccount />
+            <VscAccount /><span>account</span>
           </Link>
         </li>
       </ul>

@@ -67,7 +67,7 @@ const SignIn = () => {
             autoComplete="on"
           />
         </div>
-        <form className="div">
+        <div className="div">
           <RiLockPasswordLine />
           <input
             type="password"
@@ -76,7 +76,7 @@ const SignIn = () => {
             onChange={(e) => setPassword(e.target.value)}
             autoComplete="on"
           />
-        </form>
+        </div>
 
         <div className="flexBtn">
           <button onClick={() => handleSubmit()}>Sign in</button>

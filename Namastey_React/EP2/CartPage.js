@@ -82,33 +82,35 @@ const CartPage = () => {
         <h1>login please</h1>
       ) : (
         <>
-          <div className="cart">
-            <div className="cart-header">
-              <h1>Cart</h1>{" "}
-              <button onClick={() => clearCart(user)}>Clear Cart</button>
-            </div>
- <div className="cart-row">
- <div className="cart-items">
-            {cartItems.map((item, index) => {
-              return <CartItem item={item} itemKey={item.key} key={index} />;
-            })}
-              </div>
-            <div className="pricing">
-              <div className="pricing-details">
-                <h3>price :</h3>
-                <h3>GST :</h3>
-                <h3>Delivery :</h3>
-                <h3>total price :</h3>
-              </div>
-              <div className="pricing-details">
-                <h3>₹{cartPrice}</h3>
-                <h3>+₹{gstPrice}</h3>
-                <h3>+₹50</h3>
-                <h3>₹{totalPrice}</h3>
-            </div>
-            </div>
- </div>
-          </div>
+          {cartItems.length > 0 (
+                      <div className="cart">
+                      <div className="cart-header">
+                        <h1>Cart</h1>{" "}
+                        <button onClick={() => clearCart(user)}>Clear Cart</button>
+                      </div>
+           <div className="cart-row">
+           <div className="cart-items">
+                      {cartItems.map((item, index) => {
+                        return <CartItem item={item} itemKey={item.key} key={index} />;
+                      })}
+                        </div>
+                      <div className="pricing">
+                        <div className="pricing-details">
+                          <h3>price :</h3>
+                          <h3>GST :</h3>
+                          <h3>Delivery :</h3>
+                          <h3>total price :</h3>
+                        </div>
+                        <div className="pricing-details">
+                          <h3>₹{cartPrice}</h3>
+                          <h3>+₹{gstPrice}</h3>
+                          <h3>+₹50</h3>
+                          <h3>₹{totalPrice}</h3>
+                      </div>
+                      </div>
+           </div>
+                    </div>
+          ) : (<p>Empty Cart!!</p>)}
         </>
       )}
     </>
