@@ -72,7 +72,7 @@ const CartPage = () => {
     }, 0);
     setCartPrice(totalPrice);
     const gst = (totalPrice * 0.18).toFixed(2); // Calculate GST as 18% of cartPrice
-    const total = totalPrice + parseFloat(gst) + 50; // Convert gst to a number using parseFloat
+    const total = parseFloat((totalPrice + parseFloat(gst) + 50).toFixed(3)); // Convert gst to a number using parseFloat
 
     setGstPrice(gst);
     setTotalPrice(total);

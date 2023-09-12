@@ -16,6 +16,7 @@
     "@emotion/styled": "^11.11.0",
     "@fontsource/montserrat": "^5.0.8",
     "@fontsource/poppins": "^5.0.8",
+    "@google-pay/button-react": "^3.0.10",
     "@mui/icons-material": "^5.14.7",
     "@mui/material": "^5.14.7",
     "@types/react": "^18.2.21",
