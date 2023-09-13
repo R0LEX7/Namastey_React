@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import Header from "./Header";
 import { ThemeProvider } from '@mui/material/styles';
 import RestaurantCard from "./RestaurantCard";
 import { BsSearch } from "react-icons/bs";
@@ -7,9 +6,6 @@ import { Link } from "react-router-dom";
 import useRestaurant from "./utils/useRestaurent";
 import { filterData } from "./utils/functions";
 import useOnline from "./utils/useOnline";
-import { UserAuthContextProvider, useUserAuth  , userAuthContext} from "./Config/userAuthPhone.js"; 
-
-import muiTheme from "./utils/muiTheme";
 import LabelBottomNavigation from "./LabelBottomNavigation";
 import Footer from "./Footer";
 
@@ -49,9 +45,11 @@ const app = () => {
 
   return (
     
-    <ThemeProvider theme={muiTheme}>
+    <>
      
-      
+
+
+
 
       <div className="search">
         <input
@@ -60,7 +58,7 @@ const app = () => {
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
           ref={searchInputRef}
-        />
+          />
         <button
           onClick={() => {
             setFilteredRestaurant(restaurant);
@@ -79,8 +77,8 @@ const app = () => {
         {filteredRestaurant.map((restaurant) => {
           return (
             <Link
-              to={`/restaurant/${restaurant.info.id}`}
-              key={restaurant?.info.id}
+            to={`/restaurant/${restaurant.info.id}`}
+            key={restaurant?.info.id}
             >
               <RestaurantCard restaurant={restaurant?.info} />
             </Link>
@@ -90,8 +88,7 @@ const app = () => {
       <Footer/>
       <LabelBottomNavigation/>
       
-
-    </ThemeProvider>
+</>
       
     
   );

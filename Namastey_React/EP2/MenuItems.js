@@ -7,7 +7,6 @@ import firebase from "firebase/app";
 import { getDatabase, ref, set, push } from "firebase/database";
 import { onAuthStateChanged } from "firebase/auth";
 import Snackbar from "@mui/material/Snackbar";
-import MuiAlert from "@mui/material/Alert";
 import {Alert} from "./Alerts/SnackbarAlert";
 import { auth } from "./Config/firebase-config";
 
@@ -49,6 +48,8 @@ const MenuItems = (props) => {
 
     setOpen(false);
   };
+
+  /* setting user */
 
   const [user, setUser] = useState(null);
 

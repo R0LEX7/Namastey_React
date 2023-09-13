@@ -66,7 +66,7 @@ const CartItem = (props) => {
           />
           <div className="row">
             <h4>{item.isVeg?("Veg") : ("Non-Veg")}</h4>
-            <span><AiFillStar/>{item.rating.aggregatedRating.rating}</span>
+            <span><AiFillStar/>{item?.rating?.aggregatedRating?.rating}</span>
             <button onClick={handleDelete}>
               <AiFillDelete />
             </button>

@@ -1,9 +1,13 @@
-import React , { useState} from "react";
+import React , { useState , useContext} from "react";
 import { AiFillStar } from "react-icons/ai";
 import { IMG_CDN_URL } from "./config";
+import CartContext from "./CartContext";
 
 
 const RestaurantCard = (props) => {
+
+  const val = useContext(CartContext);
+  console.log(val);
   
 
     

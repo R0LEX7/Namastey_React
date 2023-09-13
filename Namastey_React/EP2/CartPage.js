@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect  , useContext} from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Config/firebase-config";
 import { getDatabase, ref, onValue, remove } from "firebase/database";
@@ -6,12 +6,38 @@ import CartItem from "./CartItem";
 import emptyCartImg from "./assets/images/emptyCart.png";
 import Snackbar from "@mui/material/Snackbar";
 import { Alert } from "./Alerts/SnackbarAlert";
+import PaymentComp from "./PaymentComp"
 import Footer from "./Footer";
+import { CartProvider } from "./CartContext";
+
+import CartContext from "./CartContext";
 // import firebase
 
 const CartPage = () => {
+  const { cartItems, setCartItems ,getCartItems , clearCart  } = useContext(CartContext);
+
+  const [open, setOpen] = useState(false);
+  const [alertSeverity, setAlertSeverity] = useState("success");
+  const [alertMessage, setAlertMessage] = useState("");
+
+  const handleClick = (severity, message) => {
+    setAlertSeverity(severity);
+    setAlertMessage(message);
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+
+
   const [user, setUser] = useState(null);
-  const [cartItems, setCartItems] = useState([]);
+  // console.log(useCart());
   const [cartPrice, setCartPrice] = useState(0);
   const [gstPrice, setGstPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -33,39 +59,6 @@ const CartPage = () => {
     }
   }, [user, cartItems]);
 
-  const db = getDatabase();
-  const getCartItems = (user) => {
-    const cartRef = ref(db, `carts/${user.uid}/`);
-
-    onValue(cartRef, (snapshot) => {
-      const cartData = snapshot.val();
-      if (cartData) {
-        const cartItemKeys = Object.keys(cartData);
-        const cartItemsArray = cartItemKeys.map((key) => ({
-          key: key,
-          ...cartData[key],
-        }));
-        setCartItems(cartItemsArray);
-      } else {
-        // Handle when the user's cart is empty
-        setCartItems([]);
-      }
-    });
-  };
-
-  console.log(cartItems);
-
-  const clearCart = (user) => {
-    if (!user) return;
-
-    const cartRef = ref(db, `carts/${user.uid}/`);
-    remove(cartRef);
-    setCartItems([]);
-    setCartPrice(0);
-    setGstPrice[0];
-    setTotalPrice[0];
-  };
-
   const getCartPrice = () => {
     const totalPrice = cartItems.reduce((acc, item) => {
       return acc + item?.price * item?.quantity;
@@ -85,17 +78,13 @@ const CartPage = () => {
     setSelectedMethod(event.target.value);
   };
 
-  const handlePayment = () => {
-    // Implement your payment logic here based on the selectedMethod
-    if (selectedMethod === "cashOnDelivery") {
-      // Handle Cash on Delivery
-      console.log("cod")
-    } else if (selectedMethod === "upi") {
-      // Handle UPI payment
-      console.log("upi")
-    }else{
-      console.log("select payment method")
-    }
+  const handlePaymentCOD = () => {
+    setTimeout(() => {
+      handleClick("success", "Payment done successfully");
+  }, 1500);
+  setTimeout(() => {
+      clearCart(user);
+  }, 2000);
   };
 
   return (
@@ -150,18 +139,19 @@ const CartPage = () => {
       <div>
         <input
           type="radio"
-          id="upi"
+          id="card"
           name="paymentMethod"
-          value="upi"
-          checked={selectedMethod === "upi"}
+          value="card"
+          checked={selectedMethod === "card"}
           onChange={handleMethodChange}
         />
-        <label htmlFor="upi">UPI</label>
+        <label htmlFor="card">Pay with Card</label>
       </div>
-      {selectedMethod === "upi" ?(console.log("display when upi selected")) : (console.log("fuck")) }
-      <button onClick={handlePayment}>Proceed to Payment</button>
+      {/* <button onClick={handlePayment}>Proceed to Payment</button> */}
     </div>
-                 <button>Order</button>
+      {selectedMethod === "card" && <PaymentComp/> }
+      {selectedMethod === "cashOnDelivery" &&  <button onClick={handlePaymentCOD}>Order</button> }
+                
                 </div>
 
 
@@ -173,6 +163,20 @@ const CartPage = () => {
             </div>
           )}
           <Footer />
+          <Snackbar
+        open={open}
+        autoHideDuration={3000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert
+          onClose={handleClose}
+          severity={alertSeverity}
+          sx={{ width: "100%" }}
+        >
+          {alertMessage}
+        </Alert>
+      </Snackbar>
         </>
       )}
     </>

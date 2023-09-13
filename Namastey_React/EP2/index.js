@@ -16,6 +16,8 @@ import Authentication from "./Auth/authentication";
 import CartPage from "./CartPage";
 import Layout from "./Layout";
 import AboutUser from "./Auth/AboutUser";
+import { CartProvider } from "./CartContext";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -63,4 +65,7 @@ const router = createBrowserRouter([
     }
   ]);
 
-root.render(<RouterProvider router={router} />);
+root.render(<CartProvider>
+  <RouterProvider router={router} />
+  </CartProvider>
+  );
