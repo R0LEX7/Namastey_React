@@ -1,13 +1,16 @@
-import React from 'react';
+import React , {useState , useContext} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AiOutlineHome, AiOutlineShoppingCart } from 'react-icons/ai';
 import { VscAccount } from 'react-icons/vsc';
-import { BsSearch } from 'react-icons/bs';
+import CartContext from './CartContext';
+import Badge from '@mui/material/Badge';
 
 export default function LabelBottomNavigation() {
   const location = useLocation();
 
-  
+  const {cartItems} = useContext(CartContext);
+
+
 
 
 
@@ -23,12 +26,16 @@ export default function LabelBottomNavigation() {
         </li>
         <li>
           <Link to="/cart" className={location.pathname === '/cart' ? 'active' : ''}>
-            <AiOutlineShoppingCart /> <span>cart</span>
+            {cartItems.length > 0 ? ( <Badge  className='badge' badgeContent={cartItems.length} color="primary"> 
+          <AiOutlineShoppingCart />
+          </Badge>) : (<AiOutlineShoppingCart/>)}
+         
+           <span>cart</span>
           </Link>
         </li>
         <li>
           <Link to="/authentication" className={location.pathname === '/authentication' ? 'active' : ''}>
-            <VscAccount /><span>account</span>
+            <VscAccount /><span>profile</span>
           </Link>
         </li>
       </ul>

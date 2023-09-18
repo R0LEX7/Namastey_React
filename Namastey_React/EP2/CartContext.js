@@ -20,11 +20,7 @@ export const CartProvider = ({ children }) => {
     });
   }, []);
 
-  // useEffect(() => {
-  //   if (cartItems.length > 0 && user) {
-  //     getCartPrice();
-  //   }
-  // }, [user, cartItems]);
+
 
   const db = getDatabase();
   const getCartItems = (user) => {

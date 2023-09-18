@@ -1,50 +1,48 @@
 import React, { useEffect, useState } from "react";
-import { onAuthStateChanged , signOut } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../Config/firebase-config";
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import { purple, red } from '@mui/material/colors';
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@emotion/react";
-
-
+import AboutUserPage from "../AboutUserPage";
+import Loader from "../Loader";
 
 const Authentication = () => {
-
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      light: '#757ce8',
-      main: '#008001',
-      dark: '#002884',
-      contrastText: '#fff',
+  const theme = createTheme({
+    palette: {
+      primary: {
+        light: "#757ce8",
+        main: "#008001",
+        dark: "#002884",
+        contrastText: "#fff",
+      },
+      secondary: {
+        light: "#ff7961",
+        main: "#08080B",
+        dark: "#ba000d",
+        contrastText: "#000",
+      },
+      fontColor: {
+        main: "#D6CDCD",
+      },
+      gold: {
+        main: "#ffff",
+      },
     },
-    secondary: {
-      light: '#ff7961',
-      main: '#08080B',
-      dark: '#ba000d',
-      contrastText: '#000',
-    },
-    fontColor : {
-      main : '#D6CDCD'
-    },
-    gold : {
-      main : '#ffff'
-    }
-  },
-});
+  });
   const [user, setUser] = useState(null);
   const [isSignUp, setIsSignUp] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const toggleMode = () => {
     setIsSignUp(!isSignUp);
   };
 
-
   useEffect(() => {
+    setLoading(true);
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
@@ -52,10 +50,11 @@ const theme = createTheme({
         setUser(null);
       }
     });
+    setLoading(false);
   }, []);
-  
-  const [alignment, setAlignment] = useState('register');
-  
+
+  const [alignment, setAlignment] = useState("register");
+
   const handleChange = (event, newAlignment) => {
     if (newAlignment !== null) {
       setAlignment(newAlignment);
@@ -64,38 +63,36 @@ const theme = createTheme({
   console.log(user);
   return (
     <ThemeProvider theme={theme}>
-
-    <div className="form">
-    {user === null ? (
-      <>
+      {loading ? (
+        <Loader/>
+      ) : (
+        <div className="form">
+          {user === null ? (
+            <>
               <ToggleButtonGroup
-              className="btn-grp"
-              color= "primary" 
-              value={alignment}
-              exclusive
-              onChange={handleChange}
-              aria-label="Register or Sign In"
-            >
-              <ToggleButton className="btn"
-          value="register"
-        >
-          Register
-        </ToggleButton>
-              <ToggleButton  className="btn" value="signIn">Sign In</ToggleButton>
-            </ToggleButtonGroup>
-            {alignment === 'register' ? (
-              <SignUp/>
-            ):(<SignIn/>)}
+                className="btn-grp"
+                color="primary"
+                value={alignment}
+                exclusive
+                onChange={handleChange}
+                aria-label="Register or Sign In"
+              >
+                <ToggleButton className="btn" value="register">
+                  Register
+                </ToggleButton>
+                <ToggleButton className="btn" value="signIn">
+                  Sign In
+                </ToggleButton>
+              </ToggleButtonGroup>
+              {alignment === "register" ? <SignUp /> : <SignIn />}
             </>
-      
-      ):(
-        <div className="about-user">
-      <h1> hello {user.email}</h1>
-      <button onClick={() => signOut(auth)}>log out</button>
-      </div>
-    )}</div>
+          ) : (
+            <AboutUserPage/>
+          )}
+        </div>
+      )}
     </ThemeProvider>
-  )
+  );
 };
 
 export default Authentication;

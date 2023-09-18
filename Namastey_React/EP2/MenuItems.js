@@ -7,15 +7,22 @@ import firebase from "firebase/app";
 import { getDatabase, ref, set, push } from "firebase/database";
 import { onAuthStateChanged } from "firebase/auth";
 import Snackbar from "@mui/material/Snackbar";
-import {Alert} from "./Alerts/SnackbarAlert";
+import { Alert } from "./Alerts/SnackbarAlert";
 import { auth } from "./Config/firebase-config";
-
-// setting Alert
-// const Alert = React.forwardRef(function Alert(props, ref) {
-//   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-// });
+import CartContext from "./CartContext";
 
 const MenuItems = (props) => {
+  const { cartItems } = useContext(CartContext);
+
+  const isItemAlreadyAdded = (name) => {
+    console.log("cartItems:", cartItems);
+
+    const matchingItems = cartItems.filter((item) =>
+      item?.name.toLowerCase().includes(name.toLowerCase())
+    );
+    console.log(matchingItems);
+    return matchingItems.length > 0;
+  };
 
   const {
     name,
@@ -30,7 +37,7 @@ const MenuItems = (props) => {
   const newRating = ratings?.aggregatedRating?.rating;
   const newPrice = price / 100;
 
-/* setting toast */
+  /* setting toast */
   const [open, setOpen] = useState(false);
   const [alertSeverity, setAlertSeverity] = useState("success");
   const [alertMessage, setAlertMessage] = useState("");
@@ -68,6 +75,10 @@ const MenuItems = (props) => {
       handleClick("info", "Please Login for add to cart");
       return;
     } else {
+      if(isItemAlreadyAdded(name)){
+        handleClick("warning", "Item already added to cart;");
+        return;
+      }
       const db = getDatabase();
       const newItem = {
         name: name,
@@ -77,21 +88,21 @@ const MenuItems = (props) => {
         imageId: imageId || "",
         isVeg: isVeg || false,
       };
-  
+      
       const cartRef = ref(db, `carts/${user.uid}/`);
-  
+
       try {
         // Use push to add a new item to the user's cart
         const newItemRef = push(cartRef, newItem);
         handleClick("success", "Item added to cart successfully");
-  
-        
       } catch (error) {
-        handleClick("error", "An error occurred while adding the item to the cart");
+        handleClick(
+          "error",
+          "An error occurred while adding the item to the cart"
+        );
       }
     }
   };
-  
 
   return (
     <>
@@ -113,24 +124,25 @@ const MenuItems = (props) => {
               <AiFillStar />
               {newRating ? newRating : "NA"}
             </span>
-            <h3> {price ? "₹" + newPrice +".00": "Not available"}</h3>
-            {price && <button onClick={addItemToCart}> Add</button>}
+            <h3> {price ? "₹" + newPrice + ".00" : "Not available"}</h3>
+            {/* {console.log(isItemAlreadyAdded())} */}
+            {price && <button  onClick={addItemToCart}> Add</button>}
           </div>
         </div>
         <Snackbar
-        open={open}
-        autoHideDuration={3000}
-        onClose={handleClose}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-      >
-        <Alert
+          open={open}
+          autoHideDuration={3000}
           onClose={handleClose}
-          severity={alertSeverity}
-          sx={{ width: "100%" }}
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
         >
-          {alertMessage}
-        </Alert>
-      </Snackbar>
+          <Alert
+            onClose={handleClose}
+            severity={alertSeverity}
+            sx={{ width: "100%" }}
+          >
+            {alertMessage}
+          </Alert>
+        </Snackbar>
       </div>
     </>
   );

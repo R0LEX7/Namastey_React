@@ -9,6 +9,8 @@ import { BiUserCircle } from "react-icons/bi";
 import { BiHomeHeart } from "react-icons/bi";
 import { BsTelephoneInbound } from "react-icons/bs";
 import LabelBottomNavigation from "../LabelBottomNavigation";
+import Loader from "../Loader";
+
 
 const AboutUser = () => {
   /* for toast */
@@ -23,7 +25,7 @@ const AboutUser = () => {
   };
 
   const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
+    if (reason === "clickAway") {
       return;
     }
 
@@ -38,15 +40,19 @@ const AboutUser = () => {
   const [mob, setMob] = useState(null);
   const [address, setAddress] = useState("");
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   const db = getDatabase();
 
   useEffect(() => {
+
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
       } else {
         setUser(null);
       }
+      setLoading(false);
     });
   }, []);
 
@@ -89,7 +95,9 @@ const AboutUser = () => {
   };
 
   return (
-    <div className="form about-form">
+    <>
+    {loading ? (<Loader/>) : (
+      <div className="form about-form">
       <p>{user ? `User Email: ${user.email}` : ""}</p>
 
       <div className="form-box">
@@ -125,7 +133,7 @@ const AboutUser = () => {
         </div>
 
         <div className="flexBtn">
-          <button onClick={handleSet}>Register</button>
+          <button onClick={handleSet}>Set Profile</button>
         </div>
       </div>
       <Snackbar
@@ -138,12 +146,14 @@ const AboutUser = () => {
           onClose={handleClose}
           severity={alertSeverity}
           sx={{ width: "100%" }}
-        >
+          >
           {alertMessage}
         </Alert>
       </Snackbar>
       <LabelBottomNavigation />
     </div>
+    )}
+          </>
   );
 };
 

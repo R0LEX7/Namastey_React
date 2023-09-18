@@ -11,6 +11,7 @@ import Footer from "./Footer";
 import { CartProvider } from "./CartContext";
 
 import CartContext from "./CartContext";
+import LabelBottomNavigation from "./LabelBottomNavigation";
 // import firebase
 
 const CartPage = () => {
@@ -162,7 +163,6 @@ const CartPage = () => {
               <img src={emptyCartImg} alt="emptyCart" />
             </div>
           )}
-          <Footer />
           <Snackbar
         open={open}
         autoHideDuration={3000}
@@ -179,6 +179,7 @@ const CartPage = () => {
       </Snackbar>
         </>
       )}
+      {/* <LabelBottomNavigation/> */}
     </>
   );
 };

@@ -17,6 +17,7 @@ import CartPage from "./CartPage";
 import Layout from "./Layout";
 import AboutUser from "./Auth/AboutUser";
 import { CartProvider } from "./CartContext";
+import Loader from "./Loader";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
     {
       path: "/restaurant/:id",
       element: (
-        <Layout> {/* Wrap the Menu component with the Layout */}
+        <Layout> 
           <Menu />
         </Layout>
       ),
@@ -61,7 +62,7 @@ const router = createBrowserRouter([
       ),
     },{
       path: "/about-user",
-      element: <AboutUser/>
+      element: <AboutUser/>,
     }
   ]);
 

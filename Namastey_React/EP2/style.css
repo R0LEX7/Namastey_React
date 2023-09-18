@@ -83,7 +83,8 @@ a > span {
   margin-top: 0;
 }
 
-.custom-bottom-nav ul li a.active > svg > path {
+.custom-bottom-nav ul li a.active > svg > path,
+.badge {
   color: whitesmoke;
 
   /* transform: scale(1.2); Scale the active item for visual feedback */
@@ -299,6 +300,70 @@ a {
   font-size: 1rem;
 }
 
+/* about-user */
+.user-col{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap:25px;
+  > h4 , > label{
+    margin: 0;
+    font-weight: 400;
+    font-family: cursive;
+    font-size: 1.112rem;
+  }
+
+}
+
+.user-about{
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* loader */
+
+.custom-loader {
+  width: 40px;
+  height: 10px;
+  color: var(--font-color);
+  background: radial-gradient(farthest-side, currentColor 90%, #0000) left /
+      10px 10px,
+    radial-gradient(farthest-side, currentColor 90%, #0000) center/10px 10px,
+    radial-gradient(farthest-side, currentColor 90%, #0000) right / 10px 10px,
+    linear-gradient(currentColor 0 0) center/100% 4px;
+  background-repeat: no-repeat;
+  position: relative;
+  animation: s6 2s infinite linear;
+}
+.custom-loader:before,
+.custom-loader:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  animation: inherit;
+  --s: calc(50% - 5px);
+  animation-direction: reverse;
+}
+.custom-loader:after {
+  --s: calc(5px - 50%);
+}
+
+@keyframes s6 {
+  0% {
+    transform: translate(var(--s, 0)) rotate(0);
+  }
+  100% {
+    transform: translate(var(--s, 0)) rotate(1turn);
+  }
+}
+/* loader ends */
+
 .main {
   padding: 20px;
   /* width : 100%; */
@@ -390,6 +455,18 @@ button {
   height: 100vh;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 /* stars */
 .row > span > svg > path {
   color: gold;
@@ -467,7 +544,8 @@ button {
 }
 .form-box > .flexBtn > button,
 a > button,
-.cart-header > button , .column > button {
+.cart-header > button,
+.column > button  , .form-box > button {
   width: 260px;
   height: 40px;
   padding: 3px;
@@ -500,11 +578,13 @@ p {
 }
 
 .cart {
-  display: flex;
+  /* display: flex; */
   align-items: center;
-  /* justify-content: center; */
+  justify-content: center;
+  /* width: 100vw; */
   flex-direction: column;
-  padding: 4px;
+  /* padding: 10px; */
+  margin-bottom: 20px;
 }
 
 .cart-header {
@@ -527,7 +607,7 @@ p {
 }
 
 .cart-card {
-  margin: 10px;
+  /* margin: 10px; */
   /* width : 95%; */
   border-bottom: solid 1px #3b3a3a;
   padding: 10px 10px 32px 10px;
@@ -556,6 +636,8 @@ p {
   color: green;
 }
 
+
+
 .item-details > img {
   width: 90px;
   border-radius: 5px;
@@ -567,8 +649,8 @@ p {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 8px;
-  justify-content: space-between;
+  gap: 18px;
+  justify-content: center;
 }
 
 .row {
@@ -592,6 +674,11 @@ p {
   font-size: 1rem;
   box-sizing: border-box;
   border-radius: 5px;
+}
+
+/* cart badge */
+.badge {
+  font-size: 1.8rem;
 }
 
 .row > .row-btn {
@@ -936,38 +1023,36 @@ p {
   text-align: center;
 }
 
-.about-form > p{
+.about-form > p {
   margin-bottom: 0;
   font-family: cursive;
-
 }
 
-.about-form > .form-box > div > input{
+.about-form > .form-box > div > input {
   text-transform: capitalize;
 }
 
- .form-box > .div{
+.form-box > .div {
   width: auto;
   background-color: var(--background);
 }
 
 /* empty cart */
 
-.empty-cart{
-  width:100%;
+.empty-cart {
+  width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  
 }
 
-.empty-cart > img{
+.empty-cart > img {
   border-radius: 5px;
   width: 15rem;
 }
 
-.column{
+.column {
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
@@ -980,8 +1065,7 @@ p {
   margin-top: 10px;
 }
 
-.payment-container{
-  
+.payment-container {
 }
 
 /* Style for the container */
@@ -1002,12 +1086,11 @@ p {
 }
 
 /* Style for the radio buttons and labels */
-.payment-container  input[type="radio"] {
+.payment-container input[type="radio"] {
   display: none;
-  
 }
 
-.payment-container  label {
+.payment-container label {
   width: 140px;
   display: inline-block;
   cursor: pointer;
@@ -1020,16 +1103,12 @@ p {
   transform: scale(0.9);
 }
 
-.payment-container  input[type="radio"]:checked + label {
+.payment-container input[type="radio"]:checked + label {
   background-color: var(--primary);
   transform: scale(1);
   color: #fff;
   transition: 0.3s ease-out;
 }
-
-
-
-
 
 /* Desktop styles */
 /* These styles apply to screens with a width of 1024px and above */
@@ -1113,13 +1192,13 @@ p {
     margin: 10px 0;
   }
 
-  .empty-cart > img{
-  border-radius: 5px;
-  width: 30%;
-}
-.column{
-  width: 50%;
-}
+  .empty-cart > img {
+    border-radius: 5px;
+    width: 30%;
+  }
+  .column {
+    width: 50%;
+  }
 }
 @media (min-width: 1024px) {
   .restaurants {
@@ -1196,7 +1275,7 @@ p {
     /* height: 95vh; */
   }
 
-  .column{
+  .column {
     width: 50%;
   }
 
@@ -1211,8 +1290,8 @@ p {
     margin: 10px 0;
   }
 
-  .empty-cart > img{
-  border-radius: 5px;
-  width: 30%;
-}
+  .empty-cart > img {
+    border-radius: 5px;
+    width: 30%;
+  }
 }

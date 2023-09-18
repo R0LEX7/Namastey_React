@@ -34,7 +34,7 @@ const PaymentComp = () => {
     }, 1500);
     setTimeout(() => {
         clearCart(user);
-    }, 2000);
+    }, 3000);
   };
 
   return (
