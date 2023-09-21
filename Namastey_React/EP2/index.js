@@ -14,9 +14,9 @@ import "@fontsource/montserrat/500.css"; // Medium
 import "@fontsource/montserrat/700.css"; // Bold
 import Authentication from "./Components/Auth/authentication";
 import CartPage from "./Components/Pages/CartPage";
-import Layout from "./Components/Layout/Layout";
 import AboutUser from "./Components/Auth/AboutUser";
 import { CartProvider } from "./Context/CartContext";
+import LabelBottomNavigation from "./Components/Layout/LabelBottomNavigation";
 // import Loader from "./Loader";
 
 
@@ -37,9 +37,10 @@ const router = createBrowserRouter([
     {
       path: "/restaurant/:id",
       element: (
-        <Layout> 
+         <>
           <Menu />
-        </Layout>
+        <LabelBottomNavigation/>
+         </>
       ),
     },
     {
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
       element: (
          
           <><Authentication />
-          <Layout/>
+          <LabelBottomNavigation/>
           </>
       ),
     },
@@ -57,7 +58,7 @@ const router = createBrowserRouter([
       element: (
         <>
           <CartPage />
-        <Layout></Layout>
+        <LabelBottomNavigation/>
         </>
       ),
     },{
