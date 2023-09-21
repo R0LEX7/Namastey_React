@@ -8,7 +8,7 @@ import { Image, Shimmer } from 'react-shimmer'
 const RestaurantCard = (props) => {
 
   const val = useContext(CartContext);
-  console.log(val);
+
   
 
     

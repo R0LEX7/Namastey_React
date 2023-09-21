@@ -9,7 +9,8 @@ import useOnline from "./utils/useOnline";
 import LabelBottomNavigation from "./Components/Layout/LabelBottomNavigation";
 
 import Footer from "./Components/Layout/Footer";
-
+import Loader from "./Components/Loader/Loader";
+import Header from "./Components/Layout/Header";
 
 
 
@@ -20,17 +21,19 @@ const app = () => {
 
   const [searchText, setSearchText] = useState("");
 
+  // const [loading, setLoading] = useState(false)
 
-  const restaurant = useRestaurant();
+  const {restaurant, loading} = useRestaurant();
 
   const searchInputRef = useRef(null);
 
   useEffect(() => {
     setFilteredRestaurant(restaurant);
-    console.log(filteredRestaurant);
   }, [restaurant]);
 
   const isOnline = useOnline();
+
+  console.log(loading)
 
   if (!isOnline)
     return (
@@ -47,11 +50,9 @@ const app = () => {
   return (
     
     <>
-     
-
-
-
-
+      <Header/>
+    { loading ? (<Loader/>) : (
+      <>
       <div className="search">
         <input
           type="text"
@@ -88,6 +89,9 @@ const app = () => {
       </div>
       <Footer/>
       <LabelBottomNavigation/>
+      
+      </>
+    )}
       
 </>
       

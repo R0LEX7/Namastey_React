@@ -99,6 +99,19 @@ a > span {
   transform: scale(1.1); /* Scale on hover for visual feedback */
 }
 
+
+/* header */
+
+.logo-img {
+
+  > img{
+  width:80px;
+
+  }
+
+}
+/* header */
+
 .card-item {
   height: 430px;
   width: 300px;

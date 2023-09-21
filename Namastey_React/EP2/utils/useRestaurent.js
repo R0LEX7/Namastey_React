@@ -5,6 +5,7 @@ import { swiggy_api_URL } from "../Config/config";
 const useRestaurant = () => {
 
   const [restaurant, setRestaurant] = useState([]);
+  const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         getRestaurants();
@@ -28,12 +29,13 @@ const useRestaurant = () => {
           const resData = await checkJsonData(json);
           // console.log(resData);
           setRestaurant(resData);
+          setLoading(false);
           
         } catch (error) {
           console.log(error);
         }
       }
-      return restaurant;
+      return{ restaurant , loading};
 }
 
 export default useRestaurant;

@@ -12,7 +12,7 @@ const Footer = () => {
             <div className="footer-row">
               <div className="col-lg-3 col-md-6">
                 <div className="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s">
-                  <p>We bring delicious food to your doorstep with our Swiggy clone project. Explore a variety of cuisines and enjoy hassle-free delivery!</p>
+                  <p>We bring delicious food to your doorstep with our Zesty Bites. Explore a variety of cuisines and enjoy hassle-free delivery!</p>
                 </div>
               </div>
               <div className="col-lg-3 col-md-6">
@@ -37,7 +37,7 @@ const Footer = () => {
           <div className="container">
             <div className="row align-items-center">
               <div className="col-lg-6 col-sm-7">
-                <p className="mb-0 f_400">&copy; {new Date().getFullYear()} Swiggy Clone. All Rights Reserved.</p>
+                <p className="mb-0 f_400">&copy; {new Date().getFullYear()} Zesty Bites. All Rights Reserved.</p>
               </div>
               <div className="col-lg-6 col-sm-5 text-right">
                 <p>

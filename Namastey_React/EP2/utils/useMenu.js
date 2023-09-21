@@ -8,6 +8,9 @@ import {
 const useMenu = (id) => {
   const [menu, setMenu] = useState([]);
   const [restaurant, setRestaurant] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+
   useEffect(() => {
     getMenu(swiggy_menu_api_URL);
   }, [id]); // Add 'id' to the dependency array
@@ -36,6 +39,7 @@ const useMenu = (id) => {
           .flat()
           .map((x) => x.card?.info) || [];
 
+          setLoading(false);
       const uniqueMenuItems = [];
       menuItemsData.forEach((item) => {
         if (!uniqueMenuItems.find((x) => x.id === item.id)) {
@@ -49,7 +53,7 @@ const useMenu = (id) => {
       console.error("Error fetching menu:", error);
     }
   }
-  return [restaurant , menu]
+  return {restaurant, menu , loading};
 };
 
 export default useMenu;
