@@ -2,7 +2,7 @@ import React , {useState , useContext} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AiOutlineHome, AiOutlineShoppingCart } from 'react-icons/ai';
 import { VscAccount } from 'react-icons/vsc';
-import CartContext from './CartContext';
+import CartContext from '../../Context/CartContext';
 import Badge from '@mui/material/Badge';
 
 export default function LabelBottomNavigation() {

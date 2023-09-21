@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../Config/firebase-config";
+import { auth } from "../../Config/firebase-config";
 import { getDatabase, ref, set, push } from "firebase/database";
 import Snackbar from "@mui/material/Snackbar";
-import { Alert } from "../Alerts/SnackbarAlert";
+import { Alert } from "../../Alerts/SnackbarAlert";
 import { BiUserCircle } from "react-icons/bi";
 import { BiHomeHeart } from "react-icons/bi";
 import { BsTelephoneInbound } from "react-icons/bs";
-import LabelBottomNavigation from "../LabelBottomNavigation";
-import Loader from "../Loader";
+import LabelBottomNavigation from "../Layout/LabelBottomNavigation";
+import Loader from "../Loader/Loader";
 
 
 const AboutUser = () => {

@@ -1,15 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AiFillStar } from "react-icons/ai";
-import { ITEM_IMG_CDN_URL } from "./config";
-import dummyImg from "./assets/images/dummy.png";
+import { ITEM_IMG_CDN_URL } from "../../Config/config";
+import dummyImg from "../../assets/images/dummy.png";
 // import userContext from "./utils/userContext";
 import firebase from "firebase/app";
 import { getDatabase, ref, set, push } from "firebase/database";
 import { onAuthStateChanged } from "firebase/auth";
 import Snackbar from "@mui/material/Snackbar";
-import { Alert } from "./Alerts/SnackbarAlert";
-import { auth } from "./Config/firebase-config";
-import CartContext from "./CartContext";
+import { Alert } from "../../Alerts/SnackbarAlert";
+import { auth } from "../../Config/firebase-config";
+import CartContext from "../../Context/CartContext";
 import { Image, Shimmer , Breathing } from 'react-shimmer'
 
 

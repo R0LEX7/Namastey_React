@@ -1,8 +1,8 @@
 import React , {useState , useContext} from 'react';
 import GooglePayButton from '@google-pay/button-react';
 import Snackbar from "@mui/material/Snackbar";
-import {Alert} from "./Alerts/SnackbarAlert";
-import CartContext from './CartContext';
+import {Alert} from "../../Alerts/SnackbarAlert";
+import CartContext from '../../Context/CartContext';
 
 const PaymentComp = () => {
 

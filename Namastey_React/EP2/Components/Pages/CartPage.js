@@ -1,18 +1,16 @@
 import React, { useState, useEffect  , useContext} from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./Config/firebase-config";
+import { auth } from "../../Config/firebase-config";
 import { getDatabase, ref, onValue, remove } from "firebase/database";
 import CartItem from "./CartItem";
-import emptyCartImg from "./assets/images/emptyCart.png";
+import emptyCartImg from "../../assets/images/emptyCart.png";
 import Snackbar from "@mui/material/Snackbar";
-import { Alert } from "./Alerts/SnackbarAlert";
+import { Alert } from "../../Alerts/SnackbarAlert";
 import PaymentComp from "./PaymentComp"
-import Footer from "./Footer";
-import { CartProvider } from "./CartContext";
 
-import CartContext from "./CartContext";
-import LabelBottomNavigation from "./LabelBottomNavigation";
-// import firebase
+
+import CartContext from "../../Context/CartContext";
+
 
 const CartPage = () => {
   const { cartItems, setCartItems ,getCartItems , clearCart  } = useContext(CartContext);

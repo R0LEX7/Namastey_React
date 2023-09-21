@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
-import CartContext from "./CartContext";
-import { auth } from "./Config/firebase-config";
+import CartContext from "../../Context/CartContext";
+import { auth } from "../../Config/firebase-config";
 import { getDatabase, ref, onValue } from "firebase/database";
-import Loader from "./Loader";
+import Loader from "../Loader/Loader";
 
 
 import { signOut } from "firebase/auth";

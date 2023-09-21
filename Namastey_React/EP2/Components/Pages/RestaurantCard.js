@@ -1,7 +1,7 @@
 import React , { useState , useContext} from "react";
 import { AiFillStar } from "react-icons/ai";
-import { IMG_CDN_URL } from "./config";
-import CartContext from "./CartContext";
+import { IMG_CDN_URL } from "../../Config/config";
+import CartContext from "../../Context/CartContext";
 import { Image, Shimmer } from 'react-shimmer'
 
 

@@ -3,10 +3,10 @@ import { HiOutlineMail } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../Config/firebase-config";
+import { auth } from "../../Config/firebase-config";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
-import { Alert } from "../Alerts/SnackbarAlert";
+import { Alert } from "../../Alerts/SnackbarAlert";
 
 
 

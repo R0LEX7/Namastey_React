@@ -6,7 +6,8 @@ import {
   signOut,
   createUserWithEmailAndPassword
 } from "firebase/auth";
-import { auth } from "../Config/firebase-config";
+import { auth } from "../../Config/firebase-config";
+
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 

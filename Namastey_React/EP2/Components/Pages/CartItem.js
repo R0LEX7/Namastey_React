@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { ITEM_IMG_CDN_URL } from "./config";
+import { ITEM_IMG_CDN_URL } from "../../Config/config";
 import { getDatabase, ref, set , remove } from "firebase/database";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./Config/firebase-config";
+import { auth } from "../../Config/firebase-config";
 import { AiFillDelete } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
 import { Image , Shimmer } from "react-shimmer";
-import dummyImg from "./assets/images/dummy.png";
+import dummyImg from "../../assets/images/dummy.png";
 
 const CartItem = (props) => {
   const { item, itemKey } = props; // Destructure item and itemKey from props

@@ -3,7 +3,7 @@ import {
   swiggy_menu_api_URL,
   RESTAURANT_TYPE_KEY,
   MENU_ITEM_TYPE_KEY,
-} from "../config";
+} from "../Config/config";
 
 const useMenu = (id) => {
   const [menu, setMenu] = useState([]);

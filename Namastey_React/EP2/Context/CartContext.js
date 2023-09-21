@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState , useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from "./Config/firebase-config";
+import { auth } from "../Config/firebase-config";
 import { getDatabase, ref, onValue, remove } from "firebase/database";
 const CartContext = createContext();
 

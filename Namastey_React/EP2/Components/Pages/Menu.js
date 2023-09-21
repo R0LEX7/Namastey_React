@@ -1,10 +1,10 @@
 import React, { useState, useEffect, lazy, Suspense , useContext } from "react";
 import { useParams } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
-import { IMG_CDN_URL } from "./config";
-import Footer from "./Footer";
-import useMenu from "./utils/useMenu";
-import LabelBottomNavigation from "./LabelBottomNavigation";
+import { IMG_CDN_URL } from "../../Config/config";
+import Footer from "../Layout/Footer";
+import useMenu from "../../utils/useMenu";
+import LabelBottomNavigation from "../Layout/LabelBottomNavigation";
 import { Image , Shimmer } from "react-shimmer";
 
 const MenuItems = lazy(() => import("./MenuItems"))

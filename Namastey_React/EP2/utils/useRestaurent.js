@@ -1,6 +1,6 @@
 
 import { useEffect , useState } from "react";
-import { swiggy_api_URL } from "../config";
+import { swiggy_api_URL } from "../Config/config";
 
 const useRestaurant = () => {
 
