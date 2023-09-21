@@ -30,7 +30,7 @@ const Menu = () => {
       <div className="restaurant-summary">
       {restaurant?.hasBestsellerItems  && <div class="ribbon"><span>best seller</span></div>}
         <Image src={IMG_CDN_URL + restaurant?.cloudinaryImageId} alt={restaurant?.name} 
-        fallback = {<Shimmer width={415} height={260} />}/>
+        fallback = {<Shimmer width={415} height={260}  />} fadeIn = {true}/>
         <div className="restaurant-details">
           <h3>{restaurant?.name}</h3>
           <h4>{restaurant?.cuisines.join(", ")} </h4>

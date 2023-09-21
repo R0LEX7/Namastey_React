@@ -112,7 +112,7 @@ const MenuItems = (props) => {
         <Image
           src={imageId ? ITEM_IMG_CDN_URL + imageId : dummyImg}
           alt={imageId}
-          fallback={<Shimmer width={210} height={120} />}
+          fallback={<Shimmer width={210} height={120} />} fadeIn = {true}
         />
         <div className="flex">
           <h3>{name}</h3>

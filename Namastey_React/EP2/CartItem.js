@@ -5,7 +5,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Config/firebase-config";
 import { AiFillDelete } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
-
+import { Image , Shimmer } from "react-shimmer";
 import dummyImg from "./assets/images/dummy.png";
 
 const CartItem = (props) => {
@@ -60,9 +60,10 @@ const CartItem = (props) => {
       <div className="cart-card">
         <h1>{item?.name}</h1>
         <div className="item-details">
-          <img
+          <Image
             src={item?.imageId ? ITEM_IMG_CDN_URL + item?.imageId : dummyImg}
             alt={item?.imageId || "dummy"}
+            fallback = {<Shimmer width={90} height={90}  />} fadeIn = {true} 
           />
           <div className="row">
             <h4>{item.isVeg?("Veg") : ("Non-Veg")}</h4>
