@@ -273,7 +273,7 @@ a {
 }
 
 .search {
-  margin: 20px 0;
+  /* margin: 20px 0; */
   width: 100%;
   display: flex;
   align-items: center;
@@ -296,8 +296,8 @@ a {
 
   box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
   padding: 14px 15px 14px 20px;
-  border: 1px solid #48494a;
-  border-right: 0;
+  border: 1.8px solid #5c5e61;
+  
   text-transform: capitalize;
 }
 

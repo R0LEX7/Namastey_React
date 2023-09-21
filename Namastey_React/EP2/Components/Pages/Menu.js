@@ -7,6 +7,7 @@ import useMenu from "../../utils/useMenu";
 import LabelBottomNavigation from "../Layout/LabelBottomNavigation";
 import { Image , Shimmer } from "react-shimmer";
 import Loader from "../Loader/Loader";
+import Header from "../Layout/Header";
 
 const MenuItems = lazy(() => import("./MenuItems"))
 
@@ -30,6 +31,7 @@ const Menu = () => {
 
   return (
    <>
+   <Header/>
    {loading ? (<Loader/>) : (<>
     <div className="main">
       

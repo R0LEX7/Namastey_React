@@ -10,7 +10,7 @@ import logoImg from "../../assets/Logo/Logo.png";
 
 export default function Header() {
   return (
-    <Box sx={{ flexGrow: 1 , marginTop : 0 }}>
+    <Box sx={{ flexGrow: 1 , marginTop : '0' }}>
       <AppBar position="static" style={{backgroundColor: '#08080b'}}>
         <Toolbar>
           
