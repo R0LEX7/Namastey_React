@@ -28,6 +28,7 @@
     "react-icons": "^4.10.1",
     "react-phone-number-input": "^3.3.6",
     "react-router-dom": "^6.15.0",
+    "react-shimmer": "^3.2.0",
     "s": "^1.0.0"
   },
   "devDependencies": {

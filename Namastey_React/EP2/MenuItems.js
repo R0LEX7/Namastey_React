@@ -10,6 +10,8 @@ import Snackbar from "@mui/material/Snackbar";
 import { Alert } from "./Alerts/SnackbarAlert";
 import { auth } from "./Config/firebase-config";
 import CartContext from "./CartContext";
+import { Image, Shimmer , Breathing } from 'react-shimmer'
+
 
 const MenuItems = (props) => {
   const { cartItems } = useContext(CartContext);
@@ -107,9 +109,10 @@ const MenuItems = (props) => {
   return (
     <>
       <div className="menu-Card">
-        <img
+        <Image
           src={imageId ? ITEM_IMG_CDN_URL + imageId : dummyImg}
           alt={imageId}
+          fallback={<Shimmer width={210} height={120} />}
         />
         <div className="flex">
           <h3>{name}</h3>

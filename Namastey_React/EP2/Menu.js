@@ -5,6 +5,7 @@ import { IMG_CDN_URL } from "./config";
 import Footer from "./Footer";
 import useMenu from "./utils/useMenu";
 import LabelBottomNavigation from "./LabelBottomNavigation";
+import { Image , Shimmer } from "react-shimmer";
 
 const MenuItems = lazy(() => import("./MenuItems"))
 
@@ -28,7 +29,8 @@ const Menu = () => {
       
       <div className="restaurant-summary">
       {restaurant?.hasBestsellerItems  && <div class="ribbon"><span>best seller</span></div>}
-        <img src={IMG_CDN_URL + restaurant?.cloudinaryImageId} alt="" />
+        <Image src={IMG_CDN_URL + restaurant?.cloudinaryImageId} alt={restaurant?.name} 
+        fallback = {<Shimmer width={415} height={260} />}/>
         <div className="restaurant-details">
           <h3>{restaurant?.name}</h3>
           <h4>{restaurant?.cuisines.join(", ")} </h4>

@@ -2,6 +2,7 @@ import React , { useState , useContext} from "react";
 import { AiFillStar } from "react-icons/ai";
 import { IMG_CDN_URL } from "./config";
 import CartContext from "./CartContext";
+import { Image, Shimmer } from 'react-shimmer'
 
 
 const RestaurantCard = (props) => {
@@ -30,8 +31,11 @@ const RestaurantCard = (props) => {
     
   
 
-   
-        <img src={IMG_CDN_URL + cloudinaryImageId} alt={cloudinaryImageId} />
+      <Image
+        src={IMG_CDN_URL + cloudinaryImageId} alt={cloudinaryImageId}
+        fallback={<Shimmer width={250} height={158} />} fadeIn = {true}
+      />
+        
         <h3>{name}</h3>
         <h5>{cuisines.join(", ")}</h5>
         <div className="details">
