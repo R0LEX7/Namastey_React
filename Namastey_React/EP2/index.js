@@ -17,7 +17,7 @@ import CartPage from "./Components/Pages/CartPage";
 import AboutUser from "./Components/Auth/AboutUser";
 import { CartProvider } from "./Context/CartContext";
 import LabelBottomNavigation from "./Components/Layout/LabelBottomNavigation";
-// import Loader from "./Loader";
+
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

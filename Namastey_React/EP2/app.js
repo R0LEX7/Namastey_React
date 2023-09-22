@@ -1,7 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-// import { ThemeProvider } from '@mui/material/styles';
 import RestaurantCard from "./Components/Pages/RestaurantCard";
-import { BsSearch } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import useRestaurant from "./utils/useRestaurent";
 import { filterData } from "./utils/functions";
@@ -17,7 +15,6 @@ const app = () => {
 
   const [searchText, setSearchText] = useState("");
 
-  // const [loading, setLoading] = useState(false)
 
   const { restaurant, loading } = useRestaurant();
 
