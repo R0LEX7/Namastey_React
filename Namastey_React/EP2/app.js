@@ -70,7 +70,7 @@ const app = () => {
           <div className="restaurants">
             {filteredRestaurant.map((restaurant) => {
               return (
-                <Link
+                <Link className="res-card"
                   to={`/restaurant/${restaurant.info.id}`}
                   key={restaurant?.info.id}
                 >
